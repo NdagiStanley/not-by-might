@@ -5,12 +5,16 @@ from .models import Bucketlist, BucketlistItem, User
 client = Client()
 
 # Create your tests here.
-user = User(username="User")
-bucketlist = Bucketlist(name="My entry Bucketlist", created_by=user)
+user = User.objects.create(username='md', password='md')
+bucketlist = Bucketlist.objects.create(name="My entry Bucketlist",
+                             created_by=user)
+item = BucketlistItem.objects.create(title="My entry Bucketlist Item",
+                          bucketlist=bucketlist)
 
 
 class APITests(TestCase):
     """APITests"""
+
     def test_index(self):
         response = client.get(reverse('index'))
         self.assertEqual(response.status_code, 200)
@@ -32,5 +36,4 @@ class BucketlistModelTest(TestCase):
 class BucketlistItemModelTest(TestCase):
     """Test BucketlistItem Model"""
     def test_string_representation(self):
-        item = BucketlistItem(title="My entry Bucketlist Item", bucketlist=bucketlist)
         self.assertEqual(str(item), '<Item {}>'.format(item.title))
