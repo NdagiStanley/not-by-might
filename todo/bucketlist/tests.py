@@ -3,8 +3,8 @@ from django.core.urlresolvers import reverse
 from .models import Bucketlist, BucketlistItem, User
 
 client = Client()
-# Create your tests here.
 
+# Create your tests here.
 user = User(username="User")
 bucketlist = Bucketlist(name="My entry Bucketlist", created_by=user)
 

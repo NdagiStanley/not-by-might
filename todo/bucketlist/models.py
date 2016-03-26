@@ -11,7 +11,6 @@ class Bucketlist(models.Model):
     #  Constructor for Bucketlist
     def __init__(self, name, created_by=''):
         self.name = name
-        # self.created_by = created_by
 
     def __str__(self):
         return '<Bucketlist {}>'.format(self.name)
@@ -26,7 +25,6 @@ class BucketlistItem(models.Model):
     #  Constructor for BucketlistItem
     def __init__(self, title, bucketlist=''):
         self.title = title
-        # self.bucketlist = bucketlist
 
     def __str__(self):
         return '<Item {}>'.format(self.title)
