@@ -101,7 +101,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'nbmight',
+            'NAME': 'bucketlist',
             'USER': 'postgres',
             'PASSWORD': '@ndel@2o15',
             'HOST': '127.0.0.1',
