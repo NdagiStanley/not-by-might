@@ -20,6 +20,6 @@ import api
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', include('bucketlist.urls')),
+    url(r'^', include('bucketlist.urls')),
     url(r'^api/v1/', include(api)),
 ]

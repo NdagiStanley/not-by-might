@@ -1,0 +1,12 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+<h1>Bucketlists</h1>
+<ul>
+    {% for bucketlist in bucketlists %}
+    <li>{{ bucketlist.name }}</li>
+    {% endfor %}
+</ul>
+</body></html>

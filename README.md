@@ -11,4 +11,4 @@
 ![Checkpoint Status](https://img.shields.io/badge/Stan_MD-task%200%20complete-green.svg)
 ![Checkpoint Status](https://img.shields.io/badge/Stan_MD-task%201%20incomplete-yellow.svg)
 ![Checkpoint Status](https://img.shields.io/badge/Stan_MD-task%202%20incomplete-yellow.svg)
-![Checkpoint Status](https://img.shields.io/badge/Stan_MD-task%203%20incomplete-red.svg)
+![Checkpoint Status](https://img.shields.io/badge/Stan_MD-task%203%20incomplete-yellow.svg)
