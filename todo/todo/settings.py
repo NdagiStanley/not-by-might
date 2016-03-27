@@ -38,7 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_nose',
-    'bucketlist'
+    'bucketlist',
+    'rest_framework',
 )
 
 # Use nose to run all tests
@@ -82,9 +83,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'todo.wsgi.application'
 
 # REST
-# REST_FRAMEWORK = {
-#     'TEST_REQUEST_DEFAULT_FORMAT': 'json'
-# }
+REST_FRAMEWORK = {
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
+}
 
 
 # Database

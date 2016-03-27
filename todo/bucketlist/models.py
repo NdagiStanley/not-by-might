@@ -15,6 +15,7 @@ class Bucketlist(models.Model):
 class BucketlistItem(models.Model):
     title = models.CharField(max_length=30)
     bucketlist = models.ForeignKey(Bucketlist, related_name="items")
+    done = models.BooleanField(default=False)
     date_created = models.DateTimeField(auto_now_add=True, editable=False)
     date_modified = models.DateTimeField(auto_now=True, editable=False)
 
