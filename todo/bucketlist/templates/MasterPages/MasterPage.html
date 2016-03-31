@@ -1,0 +1,26 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>NMB | {% block title %} {% endblock %}</title>
+</head>
+<body>
+{% block content %}
+
+{% endblock %}
+
+    <script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'bower_components/react/react.min.js' %}"></script>
+
+    {% if request.user.username == "md" %}
+        <!--Transfrom react to plain js-->
+        <script src="{% static 'bower_components/react/JSXTransformer.js' %}"></script>
+        <script type="text/jsx" src="{% static 'js/indexReact.jsx' %}"></script>
+    {% else %}
+        <script src="{% static 'bulid/js/indexReact.js' %}"></script>
+    {% endif %}
+</body>
+</html>
