@@ -1,7 +1,18 @@
 from rest_framework import generics, permissions
 
-from serializers import BucketlistSerializer, BucketlistItemSerializer
+from django.contrib.auth.models import User
+
+from serializers import BucketlistSerializer, BucketlistItemSerializer, UserRegisterSerializer
 from models import Bucketlist, BucketlistItem
+
+
+class UserRegisterAPIView(generics.CreateAPIView):
+    """For /api/v1/auth/register url path"""
+    permission_classes = (permissions.AllowAny,)
+
+    queryset = User.objects.all()
+    serializer_class = UserRegisterSerializer
+
 
 class BucketlistList(generics.ListCreateAPIView):
     """For /api/v1/bucketlist/ url path"""

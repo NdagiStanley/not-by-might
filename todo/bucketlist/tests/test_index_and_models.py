@@ -1,6 +1,6 @@
 from django.test import Client, TestCase
 from django.core.urlresolvers import reverse
-from .models import Bucketlist, BucketlistItem, User
+from ..models import Bucketlist, BucketlistItem, User
 
 client = Client()
 
