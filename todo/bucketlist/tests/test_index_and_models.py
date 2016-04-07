@@ -7,9 +7,9 @@ client = Client()
 # Create your tests here.
 user = User.objects.create(username='md', password='md')
 bucketlist = Bucketlist.objects.create(name="My entry Bucketlist",
-                             created_by=user)
+                                       created_by=user)
 item = BucketlistItem.objects.create(title="My entry Bucketlist Item",
-                          bucketlist=bucketlist)
+                                     bucketlist=bucketlist)
 
 
 class APITests(TestCase):
