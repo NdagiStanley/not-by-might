@@ -4,7 +4,6 @@ from ..models import Bucketlist, BucketlistItem, User
 
 client = Client()
 
-# Create your tests here.
 user = User.objects.create(username='md', password='md')
 bucketlist = Bucketlist.objects.create(name="My entry Bucketlist",
                                        created_by=user)
@@ -12,9 +11,8 @@ item = BucketlistItem.objects.create(title="My entry Bucketlist Item",
                                      bucketlist=bucketlist)
 
 
-class APITests(TestCase):
-    """APITests"""
-
+class IndexPage(TestCase):
+    """Test index page"""
     def test_index(self):
         response = client.get(reverse('index'))
         self.assertEqual(response.status_code, 200)
@@ -25,6 +23,9 @@ class UserModelTest(TestCase):
     def test_string_representation(self):
         self.assertEqual(str(user), user.username)
 
+    def test_user_fields(self):
+        self.assertEqual(user.username, 'md')
+
 
 class BucketlistModelTest(TestCase):
     """Test Bucketlist Model"""
@@ -32,8 +33,20 @@ class BucketlistModelTest(TestCase):
         self.assertEqual(str(bucketlist),
                          '<Bucketlist {}>'.format(bucketlist.name))
 
+    def test_bl_fields(self):
+        self.assertEqual(bucketlist.name, "My entry Bucketlist")
+        self.assertEqual(bucketlist.created_by, user)
+
+    def test_items(self):
+        self.assertEqual(len(bucketlist.items), 1)
+
 
 class BucketlistItemModelTest(TestCase):
     """Test BucketlistItem Model"""
     def test_string_representation(self):
         self.assertEqual(str(item), '<Item {}>'.format(item.title))
+
+    def test_bli_fields(self):
+        self.assertEqual(bucketlist.bl_items.first().id, 1)
+        self.assertEqual(bucketlist.bl_items.first().title, "My entry Bucketlist Item")
+        self.assertEqual(bucketlist.bl_items.first().done, False)

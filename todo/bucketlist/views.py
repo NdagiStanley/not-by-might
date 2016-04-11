@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'vue_frontend/index.html')
 
 
 class BucketlistList(APIView):

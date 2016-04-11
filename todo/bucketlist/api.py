@@ -32,7 +32,7 @@ class BucketlistItemList(generics.CreateAPIView):
     serializer_class = BucketlistItemSerializer
 
 
-class BucketlistItemDetail(generics.RetrieveUpdateDestroyAPIView):
+class BucketlistItemDetail(generics.UpdateAPIView, generics.DestroyAPIView):
     """For /api/v1/bucketlist/<id>/items/<item-id> url path"""
     queryset = BucketlistItem.objects.all()
     serializer_class = BucketlistItemSerializer
