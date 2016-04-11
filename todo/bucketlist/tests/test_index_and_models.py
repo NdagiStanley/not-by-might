@@ -1,3 +1,5 @@
+import datetime
+
 from django.test import Client, TestCase
 from django.core.urlresolvers import reverse
 from ..models import Bucketlist, BucketlistItem, User
@@ -48,5 +50,8 @@ class BucketlistItemModelTest(TestCase):
 
     def test_bli_fields(self):
         self.assertEqual(bucketlist.bl_items.first().id, 1)
+        self.assertEqual(item.id, 1)
         self.assertEqual(bucketlist.bl_items.first().title, "My entry Bucketlist Item")
+        self.assertEqual(item.title, "My entry Bucketlist Item")
         self.assertEqual(bucketlist.bl_items.first().done, False)
+        self.assertEqual(item.done, False)
