@@ -3,19 +3,6 @@ from django.core.urlresolvers import reverse
 from ..models import Bucketlist, BucketlistItem, User
 
 
-# Create your tests here.
-class FixtureTests(APITestCase):
-
-    # Include the fixtures
-    fixtures = ['bucketlists.json']
-
-    def test_fixtures(self):
-        """Test objects in fixtures"""
-        self.assertEqual(User.objects.count(), 2)
-        self.assertEqual(Bucketlist.objects.count(), 2)
-        self.assertEqual(BucketlistItem.objects.count(), 2)
-
-
 class UserTests(APITestCase):
 
     # Include the fixtures
@@ -25,7 +12,7 @@ class UserTests(APITestCase):
         """Test /api/v1/auth/register/ route"""
 
         # Already registered user
-        # This should be in the frontend validation
+        # This validation could also be in the frontend
         user = {'username': 'admin', 'email': 'ndagi@gmail.com',
                 'password': '1234', 'confirm_password': '1234'}
         response = self.client.post(reverse('register'), user, format='json')
@@ -43,7 +30,7 @@ class UserTests(APITestCase):
         """Test /api/v1/auth/login/ route"""
 
         # Random user not in DB
-        # This should be in the frontend validation
+        # This validation could also be in the frontend
         user = {'username': 'random', 'password': '1234'}
         response = self.client.post(reverse('login'), user, format='json')
         self.assertEqual(response.status_code, 400)
