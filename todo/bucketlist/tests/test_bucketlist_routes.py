@@ -95,7 +95,7 @@ class BucketlistTests(APITestCase):
         """Test that we can delete bucketlists via /api/v1/bucketlists/<id> route"""
 
         # Asserting no access without token
-        response = self.client.put(url)
+        response = self.client.delete(url)
         self.assertEqual(response.status_code, 401)
         self.assertEqual(response.data, message)
 

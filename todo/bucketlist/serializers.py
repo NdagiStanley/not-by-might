@@ -38,13 +38,7 @@ class BucketlistItemSerializer(serializers.ModelSerializer):
         model = BucketlistItem
         fields = ('bucketlist', 'id', 'title', 'done', 'date_created', 'date_modified')
 
-    def create(self, validated_data):
-        item = BucketlistItem(
-            title=validated_data['title'],
-            date_created=validated_data['date_created'].replace(microsecond=0),
-            date_modified=validated_data['date_modified'].replace(microsecond=0),
-            bucketlist=validated_data['pk'],
-            )
+        read_only_fields = ('bucketlist')
 
 
 class BucketlistSerializer(serializers.ModelSerializer):

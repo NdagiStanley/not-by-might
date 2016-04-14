@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('bucketlist.urls')),
     url(r'^api/v1/', include(api)),
-    url(r'^docs/', include('rest_framework_docs.urls')),
+    url(r'^api/v1/docs/', include('rest_framework_docs.urls')),
 ]
