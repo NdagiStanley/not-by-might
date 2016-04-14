@@ -62,7 +62,6 @@ class BucketlistItemList(generics.CreateAPIView):
 class BucketlistItemDetail(generics.UpdateAPIView, generics.DestroyAPIView):
     """For /api/v1/bucketlist/<bucketlist-id>/items/<id> url path"""
 
-    # queryset = BucketlistItem.objects.all()
     serializer_class = BucketlistItemSerializer
 
     def get_queryset(self):
