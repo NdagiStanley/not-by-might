@@ -1,0 +1,17 @@
+{
+  "name": "scotch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "vue": "^0.12.12",
+    "vue-resource": "^0.7.0"
+  }
+}
