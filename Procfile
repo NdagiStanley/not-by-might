@@ -1,1 +1,1 @@
-web: gunicorn todo.wsgi --pythonpath=todo --log-file -
+web: python todo/manage.py migrate; gunicorn todo.wsgi --pythonpath=todo --log-file -
