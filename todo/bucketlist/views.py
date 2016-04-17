@@ -9,6 +9,9 @@ from rest_framework.views import APIView
 def index(request):
     return render(request, 'index.html')
 
+def app(request):
+    return render(request, 'app.html')
+
 
 class BucketlistList(APIView):
     renderer_classes = [TemplateHTMLRenderer]
