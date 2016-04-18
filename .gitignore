@@ -63,3 +63,16 @@ target/
 
 # Static files
 staticfiles/
+
+# temporary files
+*.tmp
+*~
+
+# OSX folder attributes
+.DS_Store
+
+# npm debugging logs
+npm-debug.log*
+
+# project dependencies
+node_modules

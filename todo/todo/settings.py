@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'bucketlist',
     'rest_framework',
     'rest_framework_docs',
+    'webpack_loader',
 )
 
 # Use nose to run all tests
@@ -92,7 +93,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.BasicAuthentication',
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -144,5 +144,20 @@ USE_TZ = True
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'bucketlist/static'),
+)
+
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-STATIC_URL = '/bucketlist/static/'
+STATIC_URL = '/staticfiles/'
+
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME': 'build/',  # must end with slash
+        'STATS_FILE': os.path.join(BASE_DIR, '../webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'IGNORE': ['.+\.hot-update.js', '.+\.map']
+    }
+}

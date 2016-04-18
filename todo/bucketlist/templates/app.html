@@ -1,6 +1,8 @@
 {% extends 'MasterPages/MasterPage.html' %}
+{% load render_bundle from webpack_loader %}
 {% block title %}APP{% endblock %}
 {% block content %}
+
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -14,11 +16,11 @@
 
     <!-- Header -->
     <section id="app">
-        <div class="container">
 
         <!-- Login and Register forms by REACT -->
+        <div id="react"></div>
 
-        </div>
+
         <div id="dev-links">
             <a href="/admin/" class="btn btn-xl">ADMIN</a>
             <a href="/api/v1/auth/login/" class="btn btn-xl">API</a>

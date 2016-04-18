@@ -35,21 +35,16 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- React Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="{% static 'build/bundle.js' %}"></script>
+
 </head>
 <body id="page-top" class="index">
 {% block content %}
 
 {% endblock %}
-
-    <script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>
-    <script src="{% static 'bower_components/react/react.min.js' %}"></script>
-
-    {% if request.user.username == "md" %}
-        <!--Transfrom react to plain js-->
-        <script src="{% static 'bower_components/react/JSXTransformer.js' %}"></script>
-        <script type="text/jsx" src="{% static 'js/indexReact.jsx' %}"></script>
-    {% else %}
-        <script src="{% static 'bulid/js/indexReact.js' %}"></script>
-    {% endif %}
 </body>
 </html>
