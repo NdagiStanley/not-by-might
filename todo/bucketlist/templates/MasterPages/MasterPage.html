@@ -41,10 +41,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="{% static 'build/bundle.js' %}"></script>
 
+    <!-- Vue Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.7.0/vue-resource.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/0.7.13/vue-router.js"></script>
+
 </head>
 <body id="page-top" class="index">
+<!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <a class="navbar-brand page-scroll" href="/">Not by Might</a>
+            </div>
+        </div>
+    </nav>
+    <div id="react"></div>
 {% block content %}
 
 {% endblock %}
+                <span class="copyright">Copyright &copy; NBM 2016</span>
+                <br>
+                <h3>Tools leveraged</h3>
+                <span>Django, DRF (Django REST Framework), ReactJS, VueJS</span>
+                <br>
+                <span><a class="fa fa-github" href="https://github.com/NdagiStanley/not-by-might" target="_blank"></a></span>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="{% static 'js/vue.js' %}"></script>
+<script src="{% static 'js/bl.js' %}"></script>
+<script src="{% static 'js/bli.js' %}"></script>
 </body>
 </html>
