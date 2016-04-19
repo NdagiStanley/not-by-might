@@ -5,8 +5,12 @@ new Vue({
     el: '#register',
 
     data: {
-        user: { username: '', password: '', conf_password: '', email: '' },
-        users: []
+        user: {username: '', password: '', conf_password: '', email: '' },
+        users: [],
+        status: {
+          success: false,
+          error: false
+        }
     },
 
     // Anything within the ready function will run when the application loads
@@ -14,7 +18,15 @@ new Vue({
 
     // Methods we want to use in our application are registered here
     methods: {
-        signUP: function() {
+        signUp: function() {
+            this.$http.post('/api/vi/auth/register', user).then(function(response) {
+              console.log(this.status)
+              this.status.success = true;
+              console.log("Yei");
+              // Redirect
+            }, function() {
+              this.status.error = true;
+            })
             // this.$http.post('/api/v1/auth/register/', user).success(function() {
             //   // show success
             //   html = "<div class='alert alert-success' role='alert'>Sign up successful.</div>";
@@ -61,6 +73,7 @@ new Vue({
 var registerComponent = Vue.extend({
     template: '<h2 class="section-heading">Register</h2>' +
       '<div id="register">' +
+        '<div class="alert alert-danger" v-if="status.error">Some error message</div>' +
         '<form name="signup" id="Account">' +
         '<div class="row">' +
           '<div class="form-group">' +

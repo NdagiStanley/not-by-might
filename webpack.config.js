@@ -5,10 +5,10 @@ module.exports = {
     context: __dirname,
 
     entry: [
-      "./todo/todo/staticfiles/js/app.js"
+      "./todo/bucketlist/static/js/app.js"
     ],
     output: {
-        path: path.resolve('./todo/todo/staticfiles/build/'),
+        path: __dirname + "/todo/bucketlist/static/build",
         filename: "bundle.js"
     },
     module: {
