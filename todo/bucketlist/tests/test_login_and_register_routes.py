@@ -8,6 +8,12 @@ class UserTests(APITestCase):
     # Include the fixtures
     fixtures = ['bucketlists.json']
 
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        pass
+
     def test_register(self):
         """Test /api/v1/auth/register/ route"""
 

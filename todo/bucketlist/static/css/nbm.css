@@ -5,81 +5,104 @@
  */
 
 body {
-  overflow-x: hidden;
-  font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+    font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
 .text-muted {
-  color: #777777;
+    color: #777777;
 }
+
 .text-primary {
-  color: #fed136;
+    color: #fed136;
 }
+
 p {
-  font-size: 14px;
-  line-height: 1.75;
+    font-size: 14px;
+    line-height: 1.75;
 }
+
 p.large {
-  font-size: 16px;
+    font-size: 16px;
 }
+
 a,
 a:hover {
-  cursor: pointer;
-},
+    cursor: pointer;
+}
+
+,
 a:focus,
 a:active,
 a.active {
-  outline: none;
+    outline: none;
 }
+
 a {
-  color: #F3EFF3;
+    color: #462F8A;
 }
+
 a:hover,
 a:focus,
 a:active,
 a.active {
-  color: #F3EFF6;
+    color: #462F8A;
 }
+
 h1,
 h2,
-h3,
+h3 {
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 25px;
+}
+
 h4,
 h5,
 h6 {
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-  font-weight: 700;
+    font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
+    text-transform: uppercase;
+    font-weight: 700;
 }
+
 .img-centered {
-  margin: 0 auto;
+    margin: 0 auto;
 }
+
 .bg-light-gray {
-  background-color: #f7f7f7;
+    background-color: #f7f7f7;
 }
+
 .bg-darkest-gray {
-  background-color: #222222;
+    background-color: #222222;
 }
+
 .btn-primary {
-  color: #ffffff;
-  background-color: #fed136;
-  border-color: #fed136;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-  font-weight: 700;
+    color: #ffffff;
+    background-color: #fed136;
+    border-color: #fed136;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
 }
+
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
-  color: #ffffff;
-  background-color: #fec503;
-  border-color: #f6bf01;
+    color: #ffffff;
+    background-color: #fec503;
+    border-color: #f6bf01;
 }
+
 .btn-primary:active,
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
-  background-image: none;
+    background-image: none;
 }
+
 .btn-primary.disabled,
 .btn-primary[disabled],
 fieldset[disabled] .btn-primary,
@@ -95,38 +118,43 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-  background-color: #fed136;
-  border-color: #fed136;
+    background-color: #fed136;
+    border-color: #fed136;
 }
+
 .btn-primary .badge {
-  color: #fed136;
-  background-color: #ffffff;
+    color: #fed136;
+    background-color: #ffffff;
 }
+
 .btn-xl {
-  color: #F3EFF3;
-  background-color: #462F8A;
-  border-color: #462F8A;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-  font-weight: 700;
-  border-radius: 5px;
-  font-size: 18px;
-  padding: 20px 40px;
+    color: #F3EFF3;
+    background-color: #462F8A;
+    border-color: #462F8A;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 20px 40px;
 }
+
 .btn-xl:hover,
 .btn-xl:focus,
 .btn-xl:active,
 .btn-xl.active,
 .open .dropdown-toggle.btn-xl {
-  color: #462F8A;
-  background-color: #F3EFF3;
-  border-color: #77A4A0;
+    color: #462F8A;
+    background-color: #F3EFF3;
+    border-color: #77A4A0;
 }
+
 .btn-xl:active,
 .btn-xl.active,
 .open .dropdown-toggle.btn-xl {
-  background-image: none;
+    background-image: none;
 }
+
 .btn-xl.disabled,
 .btn-xl[disabled],
 fieldset[disabled] .btn-xl,
@@ -142,195 +170,227 @@ fieldset[disabled] .btn-xl:active,
 .btn-xl.disabled.active,
 .btn-xl[disabled].active,
 fieldset[disabled] .btn-xl.active {
-  background-color: #fed136;
-  border-color: #fed136;
+    background-color: #fed136;
+    border-color: #fed136;
 }
+
 .btn-xl .badge {
-  color: #fed136;
-  background-color: #ffffff;
+    color: #fed136;
+    background-color: #ffffff;
 }
+
 .navbar-default {
-  background-color: #222222;
-  border-color: transparent;
+    background-color: #222222;
+    border-color: transparent;
 }
+
 .navbar-default .navbar-brand {
-  color: #F3EFF3;
-  font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
+    color: #F3EFF3;
+    font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
 }
+
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus,
 .navbar-default .navbar-brand:active,
 .navbar-default .navbar-brand.active {
-  color: grey;
+    color: grey;
 }
+
 .navbar-default .navbar-collapse {
-  border-color: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.02);
 }
+
 .navbar-default .navbar-toggle {
-  background-color: #fed136;
-  border-color: #fed136;
+    background-color: #fed136;
+    border-color: #fed136;
 }
+
 .navbar-default .navbar-toggle .icon-bar {
-  background-color: white;
+    background-color: white;
 }
+
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-  background-color: #fed136;
+    background-color: #fed136;
 }
+
 .navbar-default .nav li a {
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-  font-weight: 400;
-  letter-spacing: 1px;
-  color: white;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: white;
 }
+
 .navbar-default .nav li a:hover,
 .navbar-default .nav li a:focus {
-  color: #fed136;
-  outline: none;
+    color: #fed136;
+    outline: none;
 }
+
 .navbar-default .navbar-nav > .active > a {
-  border-radius: 0;
-  color: white;
-  background-color: #fed136;
+    border-radius: 0;
+    color: white;
+    background-color: #fed136;
 }
+
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  color: white;
-  background-color: #fec503;
+    color: white;
+    background-color: #fec503;
 }
+
 @media (min-width: 768px) {
-  .navbar-default {
-    background-color: transparent;
-    padding: 25px 0;
-    -webkit-transition: padding 0.3s;
-    -moz-transition: padding 0.3s;
-    transition: padding 0.3s;
-    border: none;
-  }
-  .navbar-default .navbar-brand {
-    font-size: 2em;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-  }
-  .navbar-default .navbar-nav > .active > a {
-    border-radius: 3px;
-  }
-  .navbar-default.navbar-shrink {
-    background-color: #222222;
-    padding: 10px 0;
-  }
-  .navbar-default.navbar-shrink .navbar-brand {
-    font-size: 1.5em;
-  }
+    .navbar-default {
+        background-color: transparent;
+        padding: 25px 0;
+        -webkit-transition: padding 0.3s;
+        -moz-transition: padding 0.3s;
+        transition: padding 0.3s;
+        border: none;
+    }
+    .navbar-default .navbar-brand {
+        font-size: 2em;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s;
+    }
+    .navbar-default .navbar-nav > .active > a {
+        border-radius: 3px;
+    }
+    .navbar-default.navbar-shrink {
+        background-color: #222222;
+        padding: 10px 0;
+    }
+    .navbar-default.navbar-shrink .navbar-brand {
+        font-size: 1.5em;
+    }
 }
+
 header {
-  background-image: url('../images/head.png');
-  background-repeat: none;
-  background-attachment: scroll;
-  background-position: center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
-  text-align: center;
-  color: #F3EFF3;
+    background-image: url('../images/head.png');
+    background-repeat: none;
+    background-attachment: scroll;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    text-align: center;
+    color: #F3EFF3;
 }
+
 header .intro-text {
-  padding-top: 50px;
-  padding-bottom: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
+
 header .intro-text .intro-lead-in {
-  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-style: italic;
-  font-size: 22px;
-  line-height: 22px;
-  margin-bottom: 25px;
-}
-header .intro-text .intro-heading {
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 50px;
-  line-height: 50px;
-  margin-bottom: 25px;
-}
-@media (min-width: 768px) {
-  header .intro-text {
-    padding-top: 250px;
-    padding-bottom: 200px;
-  }
-  header .intro-text .intro-lead-in {
     font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-style: italic;
-    font-size: 40px;
-    line-height: 40px;
+    font-size: 22px;
+    line-height: 22px;
     margin-bottom: 25px;
-  }
-  header .intro-text .intro-heading {
+}
+
+header .intro-text .intro-heading {
     font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 75px;
-    line-height: 75px;
-    margin-bottom: 50px;
-  }
+    font-size: 50px;
+    line-height: 50px;
+    margin-bottom: 25px;
 }
-section#app {
-  background-image: url('../images/head.png');
-  background-repeat: none;
-  background-attachment: scroll;
-  background-position: center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
-  text-align: center;
-  color: #F3EFF3;
-}
-section#background-image {
-  opacity: 40%;
-}
-section {
-  padding: 100px 0;
-}
-section h2.section-heading {
-  font-size: 40px;
-  margin-top: 0;
-  margin-bottom: 15px;
-}
-section h3.section-subheading {
-  font-size: 16px;
-  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: none;
-  font-style: italic;
-  font-weight: 400;
-  margin-bottom: 75px;
-}
+
 @media (min-width: 768px) {
-  section {
-    padding: 150px 0;
-  }
+    header .intro-text {
+        padding-top: 250px;
+        padding-bottom: 200px;
+    }
+    header .intro-text .intro-lead-in {
+        font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-style: italic;
+        font-size: 40px;
+        line-height: 40px;
+        margin-bottom: 25px;
+    }
+    header .intro-text .intro-heading {
+        font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 75px;
+        line-height: 75px;
+        margin-bottom: 50px;
+    }
 }
+
+section#app {
+    background-image: url('../images/head.png');
+    background-repeat: none;
+    background-attachment: scroll;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    text-align: center;
+    color: #F3EFF3;
+}
+
+section#app a {
+    color: #462F8A;
+}
+
+section#background-image {
+    opacity: 40%;
+}
+
+section {
+    padding: 100px 0;
+}
+
+section h2.section-heading {
+    font-size: 40px;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+section h3.section-subheading {
+    font-size: 16px;
+    font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: none;
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 75px;
+}
+
+@media (min-width: 768px) {
+    section {
+        padding: 150px 0;
+    }
+}
+
 .service-heading {
-  margin: 15px 0;
-  text-transform: none;
+    margin: 15px 0;
+    text-transform: none;
 }
+
 footer {
-  padding: 25px 0;
-  text-align: center;
+    padding: 25px 0;
+    text-align: center;
 }
+
 footer span.copyright {
-  line-height: 40px;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-  text-transform: none;
+    line-height: 40px;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    text-transform: none;
 }
+
 footer ul.quicklinks {
-  margin-bottom: 0;
-  line-height: 40px;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-  text-transform: none;
+    margin-bottom: 0;
+    line-height: 40px;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    text-transform: none;
 }

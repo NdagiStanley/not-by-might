@@ -18,7 +18,7 @@ def app(request):
 
 class BucketlistList(APIView):
     renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'bucketlist_list.html'
+    template_name = 'bucketlist.html'
 
     def get(self, request):
         queryset = Bucketlist.objects.all()
@@ -27,7 +27,7 @@ class BucketlistList(APIView):
 
 class BucketlistDetail(APIView):
     renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'bucketlist_detail.html'
+    template_name = 'bucketlist.html'
 
     def get(self, request, pk):
         bucketlist = get_object_or_404(Bucketlist, pk=pk)

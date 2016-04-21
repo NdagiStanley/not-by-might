@@ -1,34 +1,41 @@
-{% extends 'MasterPages/MasterPage.html' %}
-{% load render_bundle from webpack_loader %}
+{% extends 'masterpage.html' %}
+{% load staticfiles %}
 {% load rest_framework %}
 {% block title %}APP{% endblock %}
 {% block content %}
-    <!-- Header -->
-    <section id="app">
-
-        <!-- Login and Register forms by REACT -->
-        <div id="react"></div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12" id="login">
-                    <div class="col-lg-4"></div>
-                    <div class="col-lg-4" class="container">
-                        <router-view></router-view>
-                    </div>
-                    <div class="col-lg-4"></div>
+<!-- Header -->
+<section id="app">
+    <!-- Login and Register forms by REACT -->
+    <div id="react"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12" id="account">
+                <div class="col-lg-4 col-lg-offset-4" class="container">
+                    <router-view>
+                    <!-- Vue routes -->
+                    </router-view>
+                    <a href="/bucketlists/1"><h3>bucketlists</h3></a>
                 </div>
             </div>
         </div>
-    </section>
-    <footer>
+    </div>
+</section>
+<footer>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <a href="/admin/">ADMIN</a>
+                <a href="/admin/" target="_blank">ADMIN</a>
                 <br>
-                <a href="/api/v1/auth/login/">API</a>
+                <a href="/api/v1/auth/login/" target="_blank">API</a>
                 <br>
-                <a href="/api/v1/docs/">DOCS</a>
+                <a href="/api/v1/docs/" target="_blank">DOCS</a>
                 <br>
-{% endblock %}
+                <a href="https://nbm-doit.mybalsamiq.com/projects/nbm/Start%20page" target="_blank">WIREFRAME</a>
+                <br>
+                <a href="https://color.adobe.com/abstract-color-theme-7938072/" target="_blank">COLOR THEME USED</a>
+                <br>
+                {% endblock %}
+
+                {% block vuejsfiles %}
+                <script src="{% static 'js/account.js' %}"></script>
+                {% endblock %}
