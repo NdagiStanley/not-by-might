@@ -1,6 +1,5 @@
 {% extends 'masterpage.html' %}
 {% load staticfiles %}
-{% load rest_framework %}
 {% block title %}APP{% endblock %}
 {% block content %}
 <!-- Header -->
@@ -14,7 +13,7 @@
                     <router-view>
                     <!-- Vue routes -->
                     </router-view>
-                    <a href="/bucketlists/1"><h3>bucketlists</h3></a>
+                    <a href="/bucketlists/"><h3>bucketlists</h3></a>
                 </div>
             </div>
         </div>

@@ -1,10 +1,10 @@
 from django.conf.urls import url
 
-from .views import index, app, BucketlistDetail, BucketlistItemDetail
+from .views import index, account, bucketlists, bucketlist_items
 
 urlpatterns = [
     url(r'^$', index, name='index'),
-    url(r'^app/$', app, name='app'),
-    url(r'^bucketlists/(?P<pk>[0-9]+)$', BucketlistDetail.as_view(), name='bucketlist'),
-    url(r'^bucketlists/(?P<list>[0-9]+)/items/(?P<pk>[0-9]+)$', BucketlistItemDetail.as_view(), name='bucketlist-item'),
+    url(r'^account/$', account, name='account'),
+    url(r'^bucketlists/$', bucketlists, name='bucketlists'),
+    url(r'^bucketlist_items/$', bucketlist_items, name='bucketlist-items'),
 ]
