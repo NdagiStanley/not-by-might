@@ -1,17 +1,12 @@
-{% extends 'masterpage.html' %}
-{% load staticfiles %}
-{% block title %}APP{% endblock %}
-{% block content %}
+{% extends 'masterpage.html' %} {% load staticfiles %} {% block title %}APP{% endblock %} {% block content %}
 <!-- Header -->
 <section id="app">
-    <!-- Login and Register forms by REACT -->
-    <div id="react"></div>
     <div class="container">
         <div class="row">
             <div class="col-lg-12" id="account">
                 <div class="col-lg-4 col-lg-offset-4" class="container">
                     <router-view>
-                    <!-- Vue routes -->
+                        <!-- Vue routes -->
                     </router-view>
                     <a href="/bucketlists/"><h3>bucketlists</h3></a>
                 </div>
@@ -19,6 +14,84 @@
         </div>
     </div>
 </section>
+<template id="register_form">
+    <h2 class="section-heading">Register</h2>
+    <div id="register">
+        <div class="alert alert-danger" v-if="status.error">Some error message</div>
+        <form name="signup" id="Account" @submit="signUp">
+            <div class="row">
+                <div class="form-group">
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Start by entering your username *"
+                           id="name"
+                           required data-validation-required-message="Please enter your name."
+                           v-model="user.username"
+                           v-validate:username="['required']">
+                    <p class="help-block text-danger"></p>
+                </div>
+                <div class="form-group">
+                    <span v-show="user.username">
+                    <input type="email" class="form-control" placeholder="Now your Email *" id="email" required data-validation-required-message="Please enter your email address." v-model="user.email">
+                    </span>
+                    <p class="help-block text-danger"></p>
+                </div>
+                <div class="form-group">
+                    <span v-show="user.email">
+                    <input type="password" class="form-control" placeholder="Enter your password *" id="password" required data-validation-required-message="Please enter the password you are to use." v-model="user.password">
+                    </span>
+                    <p class="help-block text-danger"></p>
+                </div>
+                <div class="form-group">
+                    <span v-show="user.password">
+                    <input type="password" class="form-control" placeholder="Confirm the password you've just entered *" id="password" required data-validation-required-message="Please confirm the password you entered." v-model="user.confirm_password">
+                    </span>
+                    <p class="help-block text-danger"></p>
+                </div>
+                <div>
+                    <span v-show="user.confirm_password">
+                    <div id="success"></div>
+                    <button type="submit" class="btn btn-xl">Sign Up</button>
+                    <span v-show="status"> [[ status ]] </span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <br>
+    <p><a v-link="{ path: '/login/', replace: true }">Already, having an account? Login</a></p>
+    <pre>
+        [[ $data.user | json ]]
+    </pre>
+</template>
+<template id="login_form">
+    <h2 class="section-heading">Login</h2>
+    <div id="login">
+        <form name="signup" id="Account" @submit="signIn">
+            <div class="row">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Your username *" id="name" required data-validation-required-message="Please enter your username." v-model="user.username">
+                    <p class="help-block text-danger"></p>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Password *" id="password" required data-validation-required-message="Please enter your password." v-model="user.password">
+                    <p class="help-block text-danger"></p>
+                </div>
+                <span v-show="status"> [[ status ]] </span>
+                <span v-else>
+                    <div>
+                        <div id="success"></div>
+                        <button type="submit" class="btn btn-xl">Login</button>
+                    </div>
+                </span>
+            </div>
+        </form>
+    </div>
+    <br>
+    <p><a v-link="{ path: '/', replace: true }">You don't have an account? Register</a></p>
+    <pre>
+        [[ $data.user | json ]]
+    </pre>
+</template>
 <footer>
     <div class="container">
         <div class="row">
@@ -32,9 +105,6 @@
                 <a href="https://nbm-doit.mybalsamiq.com/projects/nbm/Start%20page" target="_blank">WIREFRAME</a>
                 <br>
                 <a href="https://color.adobe.com/abstract-color-theme-7938072/" target="_blank">COLOR THEME USED</a>
-                <br>
-                {% endblock %}
-
-                {% block vuejsfiles %}
+                <br> {% endblock %} {% block vuejsfiles %}
                 <script src="{% static 'js/account.js' %}"></script>
                 {% endblock %}
