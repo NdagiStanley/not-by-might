@@ -3,102 +3,91 @@ Vue.config.delimiters = ["[[", "]]"]
 // For Register. This is our root page
 var registerComponent = Vue.extend({
     template: '#register_form',
+    // User object will let us check authentication status
+    user: {
+      authenticated: false
+    },
     methods: {
         signUp: function() {
             console.log(this.$data.user);
             this.$http.post('/api/v1/auth/register/', this.$data.user).then(function(response) {
-                            this.$set('status',
-                                      response.status == '201' ? 'Signing you up' : 'ERROR');
-                            console.log(response.status);
-                        })
+                // set data on vm
+                this.$set('status',
+                    response.status == '201' ? 'Signing you up' : 'ERROR');
+                console.log(response.status);
+                var login_details = {
+                    username: this.$data.user.username,
+                    password: this.$data.user.password
+                };
+                this.$http.post('/api/v1/auth/login/', login_details).then(function(response) {
+                    localStorage.setItem('id_token', response.data.token);
+                    this.user.authenticated = true;
+                    window.location.href = "http://localhost:8000/bucketlists/";
+                  });
+            })
         }
     }
 })
 
 var loginComponent = Vue.extend({
-            template: '#login_form',
-            methods: {
-                signIn: function() {
-                    console.log(this.$data.user)
-                    this.$http.post('/api/v1/auth/login/', this.$data.user).then(function(response) {
-                            // get status
-                            response.status;
-
-                            // get all headers
-                            response.headers();
-
-                            // get 'expires' header
-                            response.headers('expires');
-
-                            // set data on vm
-                            this.$set('status',
-                                      response.status == '200' ? 'Loginning you in' : 'ERROR');
-                            console.log(response.data.token);
-                            // localStorage.setItem('token': response.data.token);
-                        })
-                    }
-                }
+    template: '#login_form',
+    user: {
+      authenticated: false
+    },
+    methods: {
+        signIn: function() {
+            console.log(this.$data.user)
+            this.$http.post('/api/v1/auth/login/', this.$data.user).then(function(response) {
+                // set data on vm
+                this.$set('status',
+                          response.status == '200' ? 'Loginning you in' : 'ERROR');
+                localStorage.setItem('username', this.$data.user.username);
+                localStorage.setItem('id_token', response.data.token);
+                this.user.authenticated = true;
+                window.location.href = "http://localhost:8000/bucketlists/";
             })
+        }
+    }
+})
 
-        new Vue({
+new Vue({
 
-            // We want to target the div with an id of 'Register'
-            el: '#app',
+    // We want to target the section with an id of 'app'
+    el: '#app',
 
-            components: {
-                registerComponent,
-                loginComponent
-            },
+    components: {
+        registerComponent,
+        loginComponent
+    }
 
-            data: {
-                user: { username: 'abc', password: 'abc', confirm_password: '', email: '' },
-                users: []
-            },
+});
 
-            ready: function() {},
+// Tell Vue to use view-router
+Vue.use(VueRouter)
 
-            methods: {
-                validate: function() {
-                    alert('Signing in');
-                },
-                signUp: function() {
-                    console.log(user)
-                    alert('Signing in');
-                },
+// Router options
+var router = new VueRouter({
+    history: false,
+    root: '/'
+})
 
-                signIn: function(user) {
-                    console.log(user)
-                }
-            }
+// Router map for defining components
+router.map({
 
-        });
+    '/': {
+        component: registerComponent
+    },
 
-        // Tell Vue to use view-router
-        Vue.use(VueRouter)
+    '/login': {
+        component: loginComponent
+    }
+});
 
-        // Router options
-        var router = new VueRouter({
-            history: false,
-            root: '/'
-        })
+// Redirect to the home route if any routes are unmatched
+router.redirect({
+    '*': '/'
+});
 
-        // Router map for defining components
-        router.map({
+var App = Vue.extend({})
 
-            '/': {
-                component: registerComponent
-            },
-
-            '/login': {
-                component: loginComponent
-            }
-        });
-
-        // Redirect to the home route if any routes are unmatched
-        router.redirect({
-            '*': '/'
-        })
-
-        var App = Vue.extend({})
-
-        router.start(App, '#app')
+router.start(App, '#app')
