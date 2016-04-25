@@ -1,14 +1,9 @@
-{% extends 'masterpage.html' %}
-{% load staticfiles %}
-{% load rest_framework %}
-{% block title %}Bucketlists{% endblock %}
-{% block navbar %}
+{% extends 'masterpage.html' %} {% load staticfiles %} {% load rest_framework %} {% block title %}Bucketlists{% endblock %} {% block navbar %}
 <span>
     <li><a class="navbar-brand page-scroll" href="/">Logout [[ username ]] </a></li>
 </span>
 </ul>
-{% endblock %}
-{% block content %}
+{% endblock %} {% block content %}
 <!-- Header -->
 <section id="all_bucketlists">
     <div id="bucketlists">
@@ -23,24 +18,30 @@
                 <h3 class="section-heading">Add a Bucketlist</h3>
             </div>
             <div class="panel-body">
-                <div class="form-group">
-                    <input class="form-control" placeholder="Bucketlist Name" v-model="bucketlist.name">
-                </div>
-                <button class="btn btn-primary" v-on="click: addBucketlist">Create</button>
+                <form name="signup" id="Account" @submit="addBucketlist">
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Bucketlist Name" v-model="bucketlist.name">
+                    </div>
+                    <button class="btn btn-primary">Create</button>
+                </form>
             </div>
         </div>
         <!-- Display bucketlists -->
         <span></span>
-        <span v-else">
-        <div class="col-md-6" v-for="bucketlist in bucketlists">
-            <div class="list-group">
-                <a href="/bucketlist_items/" class="list-group-item">
+        <span v-else ">
+        <div class="col-md-6 " v-for="bucketlist in bucketlists ">
+            <div class="list-group ">
+                <div class="list-group-item ">
+                <a href="/bucketlist_items/" @click="goToItem(bucketlist.id)">
                     <h4 >
                         [[ bucketlist.name ]]
                     </h4>
-                    <button class="btn btn-xs btn-warning" v-on="click: updateBucketlist($index)">Update</button>
-                    <button class="btn btn-xs btn-danger" v-on="click: deleteBucketlist($index)">Delete</button>
                 </a>
+                <br >
+                    <input type="text " v-model="updated " placeholder="edit me ">
+                    <button class="btn btn-xs btn-warning " @click="updateBucketlist($index, bucketlist.id) ">Update</button>
+                    <button class="btn btn-xs btn-danger " @click="deleteBucketlist($index, bucketlist.id) ">Delete</button>
+                    </div>
             </div>
         </div>
         </span>
@@ -50,9 +51,9 @@
     <br>
 </section>
 <footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+    <div class="container ">
+        <div class="row ">
+            <div class="col-md-12 ">
                 {% endblock %} {% block vuejsfiles %}
-                <script src="{% static 'js/bucketlist.js' %}"></script>
+                <script src="{% static 'js/bucketlist.js' %} "></script>
                 {% endblock %}

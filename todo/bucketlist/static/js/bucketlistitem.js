@@ -7,6 +7,7 @@ new Vue({
     // Here we can register any values or collections that hold data
     // for the application
     data: {
+        list: '',
         item: { title: ''},
         items: []
     },
@@ -15,6 +16,8 @@ new Vue({
     ready: function() {
         // When the application loads, we want to call the method that initializes
         // some data
+        var bucketlistList = localStorage.getItem('list');
+        console.log(bucketlistList.name);
         this.fetchItems();
     },
 
@@ -23,22 +26,19 @@ new Vue({
 
         // We dedicate a method to retrieving and setting some data
         fetchItems: function() {
-            var items = [{
-                id: 1,
-                title: 'ABCD'
-            }, {
-                id: 2,
-                title: 'ABCD'
-            }, {
-                id: 3,
-                title: 'ABCD'
-            }, {
-                id: 4,
-                title: 'ABCD'
-            }];
-            // $set is a convenience method provided by Vue that is similar to pushing
-            // data onto an array
-            this.$set('items', items);
+            var list = localStorage.getItem('list');
+            this.$set('list', list.name);
+            console.log(list.name);
+            Vue.http.headers.common['Authorization'] = 'JWT ' + localStorage.getItem('id_token');
+            this.$http.get('http://localhost:8000/api/v1/bucketlists/' + list_id).then(function(response) {
+                console.log(response.data);
+                this.$set('auth', true);
+                this.$set('items', response.data);
+            }, function(response) {
+                console.log(response.status);
+                this.$set('auth', false);
+                window.location.href = "http://localhost:8000/404/";
+            });
         },
 
         // Adds an item

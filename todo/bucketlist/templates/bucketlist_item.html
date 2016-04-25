@@ -1,14 +1,10 @@
-{% extends 'masterpage.html' %}
-{% load staticfiles %}
-{% load rest_framework %}
-{% block title %}ITEMS{% endblock %}
-{% block content %}
+{% extends 'masterpage.html' %} {% load staticfiles %} {% load rest_framework %} {% block title %}ITEMS{% endblock %} {% block content %}
 <!-- Header -->
 <section id="app">
     <div id="bucketlistitem">
         <!-- Add item -->
         <div class="col-md-4 col-md-offset-4">
-            <h3>/<a href="/bucketlists/">Bucketlists</a>/ [[ List ]]</h3>
+            <h3>/<a href="/bucketlists/">Bucketlists</a>/ [[ list ]]</h3>
             <div class="panel-heading">
                 <h3 class="section-heading">Add a Bucketlist Item</h3>
             </div>
@@ -19,7 +15,6 @@
                 <button class="btn btn-primary" v-on="click: addItem">Create</button>
             </div>
         </div>
-
         <!-- Display items -->
         <div class="col-md-4 col-md-offset-4" v-for="item in items">
             <div class="list-group">
@@ -41,8 +36,6 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                {% endblock %} {% block vuejs-files %}
+                <script src="{% static 'js/bucketlistitem.js' %}"></script>
                 {% endblock %}
-
-{% block vuejs-files %}
-<script src="{% static 'js/bucketlistitem.js' %}"></script>
-{% endblock %}

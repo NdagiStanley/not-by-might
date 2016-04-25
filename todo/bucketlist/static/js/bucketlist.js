@@ -31,23 +31,53 @@ new Vue({
         // We dedicate a method to retrieving and setting some data
         fetchBucketlists: function() {
             Vue.http.headers.common['Authorization'] = 'JWT ' + localStorage.getItem('id_token');
-            this.$http.get('http://localhost:8000/api/v1/bucketlists/').then(function (response) {
-                    console.log(response.data.results);
-                    this.$set('auth', true);
-                    this.$set('bucketlists', response.data.results);
-                }, function (response) {
-                    console.log(response.status);
-                    this.$set('auth', false);
-                    window.location.href = "http://localhost:8000/404/";
-                });
+            this.$http.get('http://localhost:8000/api/v1/bucketlists/').then(function(response) {
+                console.log(response.data.results);
+                this.$set('auth', true);
+                this.$set('bucketlists', response.data.results);
+            }, function(response) {
+                console.log(response.status);
+                this.$set('auth', false);
+                window.location.href = "http://localhost:8000/404/";
+            });
         },
 
         // Adds a bucketlist
         addBucketlist: function() {
             if (this.bucketlist.name) {
-                this.bucketlists.push(this.bucketlist);
+                var bucketlist = {
+                    name: this.bucketlist.name,
+                    created_by: localStorage.getItem('user')
+                };
+                this.$http.post('http://localhost:8000/api/v1/bucketlists/', bucketlist).then(function(response) {});
                 this.bucketlist = { name: '' };
+                this.bucketlists.push(this.bucketlist);
             }
+        },
+
+        // Updates a bucketlist
+        updateBucketlist: function(id, list_id) {
+            console.log({name: this.updated})
+            this.$http.put('http://localhost:8000/api/v1/bucketlists/' + list_id,
+                {name: this.updated}).then(function(response) {
+                    this.$set('bucketlist', this.updated);
+            });
+            window.location.href = "http://localhost:8000/bucketlists/";
+        },
+
+        // Deletes a bucketlist
+        deleteBucketlist: function(id, list_id) {
+            console.log({name: this.updated})
+            if(confirm("Are you sure you want to delete this bucketlist?")) {
+                this.$http.delete('http://localhost:8000/api/v1/bucketlists/' + list_id).then(function(response) {
+                    this.bucketlists.$remove(id);
+                });
+                window.location.href = "http://localhost:8000/bucketlists/";
+            }
+        },
+
+        goToItem: function(list) {
+            localStorage.setItem('list', list);
         }
     }
 });
