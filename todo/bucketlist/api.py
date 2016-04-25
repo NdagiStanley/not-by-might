@@ -22,8 +22,22 @@ class BucketlistList(generics.ListCreateAPIView):
     def get_queryset(self):
         """Return bucketlists belonging to user logged in."""
 
+        q = self.request.query_params.get('q', None)
         user_id = self.request.user.id
-        return Bucketlist.objects.filter(created_by=user_id)
+
+        if q:
+            bucketlists = Bucketlist.objects.all().filter(created_by=user_id)
+
+            results = []
+
+            for bucketlist in bucketlists:
+                if q.lower() in bucketlist.name.lower():
+                    results.append(bucketlist)
+
+            return results
+        else:
+            return Bucketlist.objects.filter(created_by=user_id)
+
 
 
 class BucketlistDetail(generics.RetrieveUpdateDestroyAPIView):
