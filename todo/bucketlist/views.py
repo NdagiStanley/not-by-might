@@ -9,6 +9,9 @@ def index(request):
 def account(request):
     return render(request, 'account.html')
 
+def not_found(request):
+    return render(request, '404.html')
+
 def bucketlists(request):
     return render(request, 'bucketlist.html')
 

@@ -1,4 +1,7 @@
-{% extends 'masterpage.html' %} {% load staticfiles %} {% block title %}APP{% endblock %} {% block content %}
+{% extends 'masterpage.html' %}
+{% load staticfiles %}
+{% block title %}APP{% endblock %}
+{% block content %}
 <!-- Header -->
 <section id="app">
     <div class="container">
@@ -8,7 +11,6 @@
                     <router-view>
                         <!-- Vue routes -->
                     </router-view>
-                    <a href="/bucketlists/"><h3>bucketlists</h3></a>
                 </div>
             </div>
         </div>
@@ -59,9 +61,6 @@
     </div>
     <br>
     <p><a v-link="{ path: '/login/', replace: true }">Already, having an account? Login</a></p>
-    <pre>
-        [[ $data.user | json ]]
-    </pre>
 </template>
 <template id="login_form">
     <h2 class="section-heading">Login</h2>
@@ -88,9 +87,6 @@
     </div>
     <br>
     <p><a v-link="{ path: '/', replace: true }">You don't have an account? Register</a></p>
-    <pre>
-        [[ $data.user | json ]]
-    </pre>
 </template>
 <footer>
     <div class="container">
@@ -105,6 +101,8 @@
                 <a href="https://nbm-doit.mybalsamiq.com/projects/nbm/Start%20page" target="_blank">WIREFRAME</a>
                 <br>
                 <a href="https://color.adobe.com/abstract-color-theme-7938072/" target="_blank">COLOR THEME USED</a>
-                <br> {% endblock %} {% block vuejsfiles %}
+                <br>
+                {% endblock %}
+                {% block vuejsfiles %}
                 <script src="{% static 'js/account.js' %}"></script>
                 {% endblock %}

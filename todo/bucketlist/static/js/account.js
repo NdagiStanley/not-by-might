@@ -20,6 +20,7 @@ var registerComponent = Vue.extend({
                     password: this.$data.user.password
                 };
                 this.$http.post('/api/v1/auth/login/', login_details).then(function(response) {
+                    localStorage.setItem('user', this.$data.user.username);
                     localStorage.setItem('id_token', response.data.token);
                     this.user.authenticated = true;
                     window.location.href = "http://localhost:8000/bucketlists/";
@@ -41,7 +42,7 @@ var loginComponent = Vue.extend({
                 // set data on vm
                 this.$set('status',
                           response.status == '200' ? 'Loginning you in' : 'ERROR');
-                localStorage.setItem('username', this.$data.user.username);
+                localStorage.setItem('user', this.$data.user.username);
                 localStorage.setItem('id_token', response.data.token);
                 this.user.authenticated = true;
                 window.location.href = "http://localhost:8000/bucketlists/";

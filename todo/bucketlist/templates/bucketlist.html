@@ -2,11 +2,22 @@
 {% load staticfiles %}
 {% load rest_framework %}
 {% block title %}Bucketlists{% endblock %}
+{% block navbar %}
+<span>
+    <li><a class="navbar-brand page-scroll" href="/">Logout [[ username ]] </a></li>
+</span>
+</ul>
+{% endblock %}
 {% block content %}
 <!-- Header -->
-<section id="app">
+<section id="all_bucketlists">
     <div id="bucketlists">
         <!-- Add bucketlist -->
+        <span v-show="bucketlists.length==0">
+            <div class="col-md-6 col-md-offset-3">
+            <h1>You have no bucketlists. <br >Create your first one below :)</h1>
+            </div>
+        </span>
         <div class="col-md-4 col-lg-offset-4">
             <div class="panel-heading">
                 <h3 class="section-heading">Add a Bucketlist</h3>
@@ -18,8 +29,9 @@
                 <button class="btn btn-primary" v-on="click: addBucketlist">Create</button>
             </div>
         </div>
-
         <!-- Display bucketlists -->
+        <span></span>
+        <span v-else">
         <div class="col-md-6" v-for="bucketlist in bucketlists">
             <div class="list-group">
                 <a href="/bucketlist_items/" class="list-group-item">
@@ -31,6 +43,7 @@
                 </a>
             </div>
         </div>
+        </span>
     </div>
     <br>
     <br>
@@ -40,8 +53,6 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                {% endblock %} {% block vuejsfiles %}
+                <script src="{% static 'js/bucketlist.js' %}"></script>
                 {% endblock %}
-
-{% block vuejsfiles %}
-<script src="{% static 'js/bucketlist.js' %}"></script>
-{% endblock %}
