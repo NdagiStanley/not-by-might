@@ -4,8 +4,8 @@ from ..models import Bucketlist, BucketlistItem, User
 
 message = {"detail":
            "Authentication credentials were not provided."}
-url = 'api/v1/bucketlists/2/items/'
-url_one = 'api/v1/bucketlists/2/items/3'
+url = '/api/v1/bucketlists/2/items/'
+url_one = '/api/v1/bucketlists/2/items/2'
 
 
 class BucketlistItemsTests(APITestCase):
@@ -19,7 +19,7 @@ class BucketlistItemsTests(APITestCase):
         response = self.client.post(reverse('login'), user, format='json')
         self.token = 'JWT ' + response.data.get('token')
 
-    def post_bucketlists_items_list(self):
+    def test_post_bucketlists_items_list(self):
         """Test that we can create items via /api/v1/bucketlists/<id>/items route"""
 
         new_bucketlist_item = {"title": "Title 3"}
@@ -37,7 +37,7 @@ class BucketlistItemsTests(APITestCase):
         self.assertEqual(auth_response.status_code, 201)
         self.assertEqual(BucketlistItem.objects.count(), 3)
 
-    def put_bucketlists_detail(self):
+    def test_put_bucketlists_detail(self):
         """Test that we can update items via /api/v1/bucketlists/<id>/items/<pk> route"""
 
         update_bucketlist_item = {"title": "Item Three"}
@@ -53,10 +53,10 @@ class BucketlistItemsTests(APITestCase):
         # Asserting access upon auth by token
         auth_response = self.client.put(url_one, update_bucketlist_item)
         self.assertEqual(auth_response.status_code, 200)
-        self.assertEqual(Bucketlist.objects.count(), 3)
-        self.assertEqual(auth_response.data.get('title'), "Item Three")
+        self.assertEqual(Bucketlist.objects.count(), 2)
+        self.assertEqual(auth_response.data.get('message'), "Item '2' updated successfully")
 
-    def delete_bucketlists_detail(self):
+    def test_delete_bucketlists_detail(self):
         """Test that we can delete items via /api/v1/bucketlists/<id>/items/<pk> route"""
 
         # Asserting no access without token
@@ -70,4 +70,4 @@ class BucketlistItemsTests(APITestCase):
         # Asserting access upon auth by token
         auth_response = self.client.delete(url_one)
         self.assertEqual(auth_response.status_code, 204)
-        self.assertEqual(Bucketlist.objects.count(), 2)
+        self.assertEqual(BucketlistItem.objects.count(), 1)

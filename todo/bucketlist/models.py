@@ -22,6 +22,8 @@ class Bucketlist(models.Model):
                  'done': item.done})
         return bucketlist_items
 
+    class Meta:
+        ordering = ['-date_modified']
 
 class BucketlistItem(models.Model):
     title = models.CharField(max_length=30)
@@ -32,3 +34,6 @@ class BucketlistItem(models.Model):
 
     def __str__(self):
         return '<Item {}>'.format(self.title)
+
+    class Meta:
+        ordering = ['-date_modified']

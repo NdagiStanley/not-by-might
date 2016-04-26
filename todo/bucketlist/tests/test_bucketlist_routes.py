@@ -4,7 +4,7 @@ from ..models import Bucketlist, BucketlistItem, User
 
 message = {"detail":
            "Authentication credentials were not provided."}
-url = 'api/v1/bucketlists/3'
+url = '/api/v1/bucketlists/2'
 
 
 class BucketlistTests(APITestCase):
@@ -18,7 +18,7 @@ class BucketlistTests(APITestCase):
         response = self.client.post(reverse('login'), user, format='json')
         self.token = 'JWT ' + response.data.get('token')
 
-    def get_bucketlists_list(self):
+    def test_get_bucketlists_list(self):
         """Test that we can retrieve bucketlists via /api/v1/bucketlists/ route"""
 
         # Asserting no access without token
@@ -31,14 +31,11 @@ class BucketlistTests(APITestCase):
 
         # Asserting access upon auth by token
         auth_response = self.client.get(reverse('bucketlist-list'))
-        self.assertEqual(auth_response.data['count'], 2)
-        import ipdb; ipdb.set_trace()
-        self.assertEqual(auth_response.data['results'][0]['id'], True)
         self.assertEqual(auth_response.status_code, 200)
         self.assertNotEqual(auth_response.data, {})
 
 
-    def post_bucketlists_list(self):
+    def test_post_bucketlists_list(self):
         """Test that we can create bucketlists via /api/v1/bucketlists/ route"""
 
         new_bucketlist = {"name": "Bucketlist 3"}
@@ -56,7 +53,7 @@ class BucketlistTests(APITestCase):
         self.assertEqual(auth_response.status_code, 201)
         self.assertEqual(Bucketlist.objects.count(), 3)
 
-    def get_bucketlists_detail(self):
+    def test_get_bucketlists_detail(self):
         """Test that we can retrieve bucketlists via /api/v1/bucketlists/<id> route"""
 
         # Asserting no access without token
@@ -70,12 +67,12 @@ class BucketlistTests(APITestCase):
         # Asserting access upon auth by token
         auth_response = self.client.get(url)
         self.assertEqual(auth_response.status_code, 200)
-        self.assertEqual(auth_response.data.get('id'), 3)
+        self.assertEqual(auth_response.data.get('id'), 2)
 
-    def put_bucketlists_detail(self):
+    def test_put_bucketlists_detail(self):
         """Test that we can update bucketlists via /api/v1/bucketlists/<id> route"""
 
-        update_bucketlist = {"name": "Bucketlist Three"}
+        update_bucketlist = {"name": "Bucketlist Two"}
 
         # Asserting no access without token
         response = self.client.put(url, update_bucketlist)
@@ -88,10 +85,10 @@ class BucketlistTests(APITestCase):
         # Asserting access upon auth by token
         auth_response = self.client.put(url, update_bucketlist)
         self.assertEqual(auth_response.status_code, 200)
-        self.assertEqual(Bucketlist.objects.count(), 3)
-        self.assertEqual(auth_response.data.get('name'), "Bucketlist Three")
+        self.assertEqual(Bucketlist.objects.count(), 2)
+        self.assertEqual(auth_response.data.get('name'), "Bucketlist Two")
 
-    def delete_bucketlists_detail(self):
+    def test_delete_bucketlists_detail(self):
         """Test that we can delete bucketlists via /api/v1/bucketlists/<id> route"""
 
         # Asserting no access without token
@@ -105,4 +102,4 @@ class BucketlistTests(APITestCase):
         # Asserting access upon auth by token
         auth_response = self.client.delete(url)
         self.assertEqual(auth_response.status_code, 204)
-        self.assertEqual(Bucketlist.objects.count(), 2)
+        self.assertEqual(Bucketlist.objects.count(), 1)
