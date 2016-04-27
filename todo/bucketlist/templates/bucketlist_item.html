@@ -1,41 +1,70 @@
-{% extends 'masterpage.html' %} {% load staticfiles %} {% load rest_framework %} {% block title %}ITEMS{% endblock %} {% block content %}
+{% extends 'masterpage.html' %}
+{% load staticfiles %}
+{% block title %}Items{% endblock %}
+{% block navbar %}
+<li>
+    <a class="navbar-brand page-scroll" href="/account/#!/login/" @click="logOut">Logout [[ username ]] </a>
+</li>
+{% endblock %}
+{% block content %}
 <!-- Header -->
-<section id="app">
+<section id="all_items">
     <div id="bucketlistitem">
         <!-- Add item -->
         <div class="col-md-4 col-md-offset-4">
             <h3>/<a href="/bucketlists/">Bucketlists</a>/ [[ list ]]</h3>
+        </div>
+        <span v-show="items.length==0">
+            <div class="col-md-6 col-md-offset-3">
+            <h1>You have no items here. <br >Create your first one below :)</h1>
+            </div>
+        </span>
+        <div class="col-md-4 col-md-offset-4">
+            <div id="status" class="alert alert-success" v-show="status"> [[ status ]] </div>
             <div class="panel-heading">
                 <h3 class="section-heading">Add a Bucketlist Item</h3>
             </div>
             <div class="panel-body">
-                <div class="form-group">
-                    <input class="form-control" placeholder="Item title *" v-model="item.title">
-                </div>
-                <button class="btn btn-primary" v-on="click: addItem">Create</button>
+                <form name="addItem" id="Item" @submit.prevent="addItem">
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Item title *" v-model="item.title">
+                    </div>
+                    <button class="btn btn-primary">Create</button>
+                </form>
             </div>
         </div>
         <!-- Display items -->
-        <div class="col-md-4 col-md-offset-4" v-for="item in items">
-            <div class="list-group">
-                <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">
-                    [[ item.title ]]
-                    </h4>
-                    <button class="btn btn-xs btn-warning" v-on="click: deleteEvent($index)">Update</button>
-                    <button class="btn btn-xs btn-danger" v-on="click: deleteEvent($index)">Delete</button>
-                </a>
+        <span v-else>
+            <div class="col-md-4 col-md-offset-4 " v-for="item in items">
+                <div class="list-group ">
+                    <div class="list-group-item ">
+                        <h4 class="list-group-item-heading ">
+                            [[ item.title ]]
+                        </h4>
+                        <span v-show="item.done==true">
+                            <h5>Yay! Completed</h5>
+                            <input type="checkbox" id="checkbox" v-model="checked=true" @click="itemNotDone(item.id)" lazy>
+                        </span>
+                        <span v-show="!item.done==true">
+                            <input type="checkbox" id="checkbox" v-model="checked=false" @click="itemDone(item.id)" lazy>
+                        </span>
+                        <br >
+                        <input type="text" v-model="updated" placeholder="edit me" lazy>
+                        <button class="btn btn-xs btn-warning " @click="updateItem($index, item.id)">Update</button>
+                        <button class="btn btn-xs btn-danger " @click="deleteItem($index, item.id)">Delete</button>
+                    </div>
+                </div>
             </div>
-        </div>
+        </span>
     </div>
     <br>
     <br>
     <br>
 </section>
 <footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                {% endblock %} {% block vuejs-files %}
-                <script src="{% static 'js/bucketlistitem.js' %}"></script>
+    <div class="container ">
+        <div class="row ">
+            <div class="col-md-12 ">
+                {% endblock %} {% block vuejsfiles %}
+                <script src="{% static 'js/bucketlistitem.js' %} "></script>
                 {% endblock %}
