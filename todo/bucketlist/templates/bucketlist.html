@@ -1,8 +1,10 @@
-{% extends 'masterpage.html' %} {% load staticfiles %} {% load rest_framework %} {% block title %}Bucketlists{% endblock %} {% block navbar %}
-<span>
-    <li><a class="navbar-brand page-scroll" href="/">Logout [[ username ]] </a></li>
-</span>
-</ul>
+{% extends 'masterpage.html' %}
+{% load staticfiles %}
+{% block title %}Bucketlists{% endblock %}
+{% block navbar %}
+<li>
+    <a class="page-scroll" href="/account/#!/login/" @click="logOut">Logout [[ username ]] </a>
+</li>
 {% endblock %} {% block content %}
 <!-- Header -->
 <section id="all_bucketlists">
@@ -14,11 +16,13 @@
             </div>
         </span>
         <div class="col-md-4 col-lg-offset-4">
+            <div id="status" class="alert alert-success" v-show="status"> [[ status ]] </div>
+            <div id="status" class="alert alert-danger" v-show="status_error"> [[ status_error ]] </div>
             <div class="panel-heading">
                 <h3 class="section-heading">Add a Bucketlist</h3>
             </div>
             <div class="panel-body">
-                <form name="signup" id="Account" @submit="addBucketlist">
+                <form name="signup" id="Account" @submit.prevent="addBucketlist">
                     <div class="form-group">
                         <input class="form-control" placeholder="Bucketlist Name" v-model="bucketlist.name">
                     </div>
@@ -27,24 +31,27 @@
             </div>
         </div>
         <!-- Display bucketlists -->
-        <span></span>
-        <span v-else ">
-        <div class="col-md-6 " v-for="bucketlist in bucketlists ">
+        <span v-else>
+        <div class="col-md-6 " v-for="bucketlist in bucketlists">
             <div class="list-group ">
                 <div class="list-group-item ">
-                <a href="/bucketlist_items/" @click="goToItem(bucketlist.id)">
+                <a href="/bucketlist_items/" @click="goToItem(bucketlist)">
                     <h4 >
                         [[ bucketlist.name ]]
                     </h4>
-                </a>
-                <br >
-                    <input type="text " v-model="updated " placeholder="edit me ">
-                    <button class="btn btn-xs btn-warning " @click="updateBucketlist($index, bucketlist.id) ">Update</button>
-                    <button class="btn btn-xs btn-danger " @click="deleteBucketlist($index, bucketlist.id) ">Delete</button>
-                    </div>
-            </div>
-        </div>
-        </span>
+                    <span class="badge">[[ bucketlist.items.length ]] items</span>
+        <br>
+        </a>
+        <br>
+        <input type="text " v-model="updated " placeholder="edit me" lazy>
+        <button class="btn btn-xs btn-warning " @click="updateBucketlist($index, bucketlist.id) ">Update</button>
+        <button class="btn btn-xs btn-danger " @click="deleteBucketlist($index, bucketlist.id) ">Delete</button>
+        <br>
+        <br>
+    </div>
+    </div>
+    </div>
+    </span>
     </div>
     <br>
     <br>

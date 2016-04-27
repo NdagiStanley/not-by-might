@@ -28,6 +28,7 @@ var registerComponent = Vue.extend({
                 this.$set('status', 'Signing you up');
                 this.$http.post('/api/v1/auth/login/', {username: this.$data.user.username, password: this.$data.user.password}).then(function(response) {
                     localStorage.setItem('id_token', response.data.token);
+                    localStorage.setItem('username', this.$data.user.username);
                     this.$set('status', 'Signing you in');
                     setTimeout(function() {
                         window.location.assign("/bucketlists/")
@@ -51,6 +52,7 @@ var loginComponent = Vue.extend({
                 // Set status
                 this.$set('status', 'Loginning you in');
                 localStorage.setItem('id_token', response.data.token);
+                localStorage.setItem('username', this.$data.user.username);
                 setTimeout(function() {
                     window.location.assign("../bucketlists/")
                 }, 1000);
