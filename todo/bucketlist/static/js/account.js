@@ -1,60 +1,15 @@
 Vue.config.delimiters = ["[[", "]]"]
 
-// For Register. This is our root page
-var registerComponent = Vue.extend({
-    template: '#register_form',
-    // User object will let us check authentication status
-    user: {
-      authenticated: false
-    },
-    methods: {
-        signUp: function() {
-            console.log(this.$data.user);
-            this.$http.post('/api/v1/auth/register/', this.$data.user).then(function(response) {
-                // set data on vm
-                this.$set('status',
-                    response.status == '201' ? 'Signing you up' : 'ERROR');
-                console.log(response.status);
-                var login_details = {
-                    username: this.$data.user.username,
-                    password: this.$data.user.password
-                };
-                this.$http.post('/api/v1/auth/login/', login_details).then(function(response) {
-                    localStorage.setItem('user', this.$data.user.username);
-                    localStorage.setItem('id_token', response.data.token);
-                    this.user.authenticated = true;
-                    window.location.href = "http://localhost:8000/bucketlists/";
-                  });
-            })
-        }
-    }
-})
-
-var loginComponent = Vue.extend({
-    template: '#login_form',
-    user: {
-      authenticated: false
-    },
-    methods: {
-        signIn: function() {
-            console.log(this.$data.user)
-            this.$http.post('/api/v1/auth/login/', this.$data.user).then(function(response) {
-                // set data on vm
-                this.$set('status',
-                          response.status == '200' ? 'Loginning you in' : 'ERROR');
-                localStorage.setItem('user', this.$data.user.username);
-                localStorage.setItem('id_token', response.data.token);
-                this.user.authenticated = true;
-                window.location.href = "http://localhost:8000/bucketlists/";
-            })
-        }
-    }
-})
-
 new Vue({
 
     // We want to target the section with an id of 'app'
     el: '#app',
+
+    data: {
+        user: { username: '', email: '', password: '', confirm_password: '' },
+        status_error: '',
+        status: ''
+    },
 
     components: {
         registerComponent,
@@ -62,6 +17,52 @@ new Vue({
     }
 
 });
+
+// For Register. This is our root page
+var registerComponent = Vue.extend({
+    template: '#register_form',
+    methods: {
+        signUp: function() {
+            // Post on Register endpoint in DRF
+            this.$http.post('/api/v1/auth/register/', this.$data.user).then(function(response) {
+                this.$set('status', 'Signing you up');
+                this.$http.post('/api/v1/auth/login/', {username: this.$data.user.username, password: this.$data.user.password}).then(function(response) {
+                    localStorage.setItem('id_token', response.data.token);
+                    this.$set('status', 'Signing you in');
+                    setTimeout(function() {
+                        window.location.assign("/bucketlists/")
+                    }, 1000);
+                  });
+            }, function(response) {
+                this.$set('status_error', 'That username already exists');
+                setTimeout(function() {
+                    window.location.assign("/account/")
+                }, 1000);
+            })
+        }
+    }
+})
+
+var loginComponent = Vue.extend({
+    template: '#login_form',
+    methods: {
+        signIn: function() {
+            this.$http.post('/api/v1/auth/login/', this.$data.user).then(function(response) {
+                // Set status
+                this.$set('status', 'Loginning you in');
+                localStorage.setItem('id_token', response.data.token);
+                setTimeout(function() {
+                    window.location.assign("../bucketlists/")
+                }, 1000);
+            }, function(response) {
+                this.$set('status_error', 'Incorrect username / password');
+                setTimeout(function() {
+                    window.location.assign("/account/")
+                }, 1000);
+            })
+        }
+    }
+})
 
 // Tell Vue to use view-router
 Vue.use(VueRouter)
