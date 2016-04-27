@@ -14,7 +14,7 @@ body {
 }
 
 .text-primary {
-    color: #fed136;
+    color: #462F8A;
 }
 
 p {
@@ -351,10 +351,27 @@ section#all_bucketlists {
     background-size: cover;
     -o-background-size: cover;
     text-align: center;
-    color: #F3EFF3;
+    color: #462F8A;
 }
 
 section#all_bucketlists a {
+    color: #342558;
+}
+
+section#all_items {
+    background-image: url('../images/head.png');
+    background-repeat: none;
+    background-attachment: scroll;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    text-align: center;
+    color: #462F8A;
+}
+
+section#all_items a {
     color: #342558;
 }
 

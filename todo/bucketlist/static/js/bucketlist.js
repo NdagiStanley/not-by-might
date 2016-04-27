@@ -64,8 +64,11 @@ new Vue({
             this.$http.put('/api/v1/bucketlists/' + list_id,
                 {name: this.updated}).then(function(response) {
                     this.$set('bucketlist', this.updated);
+                    this.$set('status', 'Bucketlist updated');
+                    setTimeout(function() {
+                        window.location.assign("/bucketlists/")
+                    }, 500);
             });
-            window.location.assign("/bucketlists/");
         },
 
         // Deletes a bucketlist
@@ -73,8 +76,11 @@ new Vue({
             if(confirm("Are you sure you want to delete this bucketlist?")) {
                 this.$http.delete('/api/v1/bucketlists/' + list_id).then(function(response) {
                     this.bucketlists.$remove(id);
+                    this.$set('status', 'Bucketlist deleted');
+                    setTimeout(function() {
+                        window.location.assign("/bucketlists/")
+                    }, 500);
                 });
-                window.location.assign("/bucketlists/");
             }
         },
 
