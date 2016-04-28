@@ -1,26 +1,17 @@
 # not-by-might
 
-This is a responsive web application that allows you to add *items* to your *bucketlist* categories.
-A bucketlist basically means that the things you would like to do or achieve before you **EXPIRE**
-The app hosted is at [nbm-doit](http://nbm-doit.herokuapp.com)
-
-----
-####BADGES
 [![Build Status](https://semaphoreci.com/api/v1/stanmd/not-by-might/branches/feature-review/badge.svg)](https://semaphoreci.com/stanmd/not-by-might)
 [![Coverage Status](https://coveralls.io/repos/github/NdagiStanley/not-by-might/badge.svg?branch=feature-review)](https://coveralls.io/github/NdagiStanley/not-by-might?branch=feature-review)
 [![Code Health](https://landscape.io/github/NdagiStanley/not-by-might/feature-review/landscape.svg?style=flat)](https://landscape.io/github/NdagiStanley/not-by-might/feature-review)
 [![Code Issues](https://www.quantifiedcode.com/api/v1/project/b4fcf46ab7d1438b86f77d14ae709f3c/badge.svg)](https://www.quantifiedcode.com/app/project/b4fcf46ab7d1438b86f77d14ae709f3c)
 ![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)
 
-----
-#####CHECKPOINT PROGRESS
-![Checkpoint Status](https://img.shields.io/badge/Stan_MD-task%200%20complete-green.svg)
-![Checkpoint Status](https://img.shields.io/badge/Stan_MD-task%201%20complete-green.svg)
-![Checkpoint Status](https://img.shields.io/badge/Stan_MD-task%202%20complete-green.svg)
-![Checkpoint Status](https://img.shields.io/badge/Stan_MD-task%203%20complete-green.svg)
-![Checkpoint Status](https://img.shields.io/badge/Stan_MD-PR%20review%20pending-red.svg)
+This is a responsive web application that allows you to add *items* to your *bucketlist* categories.
+A bucketlist basically means that the things you would like to do or achieve before you **EXPIRE**
+The app hosted is at [nbm-doit](http://nbm-doit.herokuapp.com)
 
 ----
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -28,7 +19,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisities
 
 You'll need to have the following installed in your local machine to run this application
-```Python``` and ```GIT```
+```Python```, ```Postgres``` and ```GIT```
 
 ### Installing
 
@@ -37,19 +28,53 @@ You'll need to have the following installed in your local machine to run this ap
     RUN ```git clone https://github.com/NdagiStanley/not-by-might.git```
 
 2. CD into the directory
+
     RUN ```cd not-by-might```
 
 3. Install dependencies of the application/ project
+
     RUN ```pip install -r requirements.txt```
 
-4. Setup the application
+4. Create a Postgresql database (it's best you use **PGAdmin**). Take note of the **name**, **user**, **password** and **port**.
+
+5. Open the project in your preferred text editor, navigate to the **settings.py** which is in **_todo/todo/_** directory and paste the following snippet on line **120**. Fill the _name_, _user_, _password_ and _port_ (without the []) in the snippet
+
+  ```python
+    else:
+            DATABASES = {
+                'default': {
+                    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+                    'NAME': '[name]',
+                    'USER': '[user]',
+                    'PASSWORD': '[password]',
+                    'HOST': '127.0.0.1',
+                    'PORT': '[port]',
+                }
+            }
+
+  ```
+  To continue developing the project edit the following as well. (This is at line **28**)
+
+  ```python
+    # SECURITY WARNING: don't run with debug turned on in production!
+      DEBUG = True
+
+      ALLOWED_HOSTS = []
+  ```
+
+6. Setup the application
+
     RUN ```cd todo ```
+
     RUN ```python manage.py makemigrations```
+
     RUN ```python manage.py migrate```
+
     RUN ```python manage.py collectstatic --noinput```
 
-5. Run the server
-    RUN ```python manage.py runserver``` and get to http://localhost:8000
+7. Run the server
+
+    RUN ```python manage.py runserver``` and get to [http://localhost:8000](http://localhost:8000)
 
 ### Tasks asserting completion
 
@@ -103,7 +128,7 @@ This has been implemented using vuejs (frontend framework)
 and Bootstrap (frontend framework)
 
 <div align="center"><img width="150"src="http://cwfan.cc/wp-content/uploads/2015/11/bootstrap-logo.png">
-</div></div>
+</div>
 
 
 ## Running the tests
