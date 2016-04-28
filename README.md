@@ -6,9 +6,11 @@
 [![Code Issues](https://www.quantifiedcode.com/api/v1/project/b4fcf46ab7d1438b86f77d14ae709f3c/badge.svg)](https://www.quantifiedcode.com/app/project/b4fcf46ab7d1438b86f77d14ae709f3c)
 ![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)
 
-This is a responsive web application that allows you to add *items* to your *bucketlist* categories.
 A bucketlist basically means that the things you would like to do or achieve before you **EXPIRE**
-The app hosted is at [nbm-doit](http://nbm-doit.herokuapp.com)
+
+This is a responsive web application that allows you to add *items* to your *bucketlist* categories.
+
+The application is hosted at [nbm-doit](http://nbm-doit.herokuapp.com)
 
 ----
 
@@ -149,6 +151,8 @@ Copyright AD-2016
 ###### [Stanley Ndagi](http://techkenyans.org/jamii/stanmd) c/o [Andela](http://andela.com)
 
 Inspiration:
+
+It's not by might that you achieve the things you do in life!
 <div align="center">
 <img src="https://scontent.xx.fbcdn.net/t31.0-8/13055734_10201410751228121_1746141436641529211_o.jpg">
 </div>
