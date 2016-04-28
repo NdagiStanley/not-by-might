@@ -107,11 +107,13 @@ and Bootstrap (frontend framework)
 
 
 ## Running the tests
+
 This is how to run the automated tests for this application
 
 RUN ```python manage.py test```
 
 ## Deployment
+
 You might want to deploy this project. Well, the application is ready fro deployment to heroku. After installing _heroku toolbelt_;
 
 RUN ```heroku local web``` to check it how it will look after deployment
@@ -123,6 +125,7 @@ RUN ```heroku create [appname]``` without the [ ] .
 RUN ```heroku git push [branch_name]``` without the [ ]. The branch_name should be master if you just cloned the repo and did not branch out.
 
 ----
+
 Copyright AD-2016
 ###### [Stanley Ndagi](http://techkenyans.org/jamii/stanmd) c/o [Andela](http://andela.com)
 
