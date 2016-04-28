@@ -348,7 +348,8 @@ section#all_bucketlists {
     color: #462F8A;
 }
 
-section#all_bucketlists h1,h3 {
+section#all_bucketlists h1,
+h3 {
     color: #F3EFF3;
 }
 
@@ -370,7 +371,8 @@ a {
     font-weight: 300;
 }
 
-section#all_items h1,h3 {
+section#all_items h1,
+h3 {
     color: #F3EFF3;
 }
 

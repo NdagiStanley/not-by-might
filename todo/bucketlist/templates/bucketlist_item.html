@@ -1,12 +1,8 @@
-{% extends 'masterpage.html' %}
-{% load staticfiles %}
-{% block title %}Items{% endblock %}
-{% block navbar %}
+{% extends 'masterpage.html' %} {% load staticfiles %} {% block title %}Items{% endblock %} {% block navbar %}
 <li>
     <a class="navbar-brand page-scroll" href="/account/#!/login/" @click="logOut">Logout [[ username ]] </a>
 </li>
-{% endblock %}
-{% block content %}
+{% endblock %} {% block content %}
 <!-- Header -->
 <section id="all_items">
     <div id="bucketlistitem">
@@ -21,6 +17,7 @@
         </span>
         <div class="col-md-4 col-md-offset-4">
             <div id="status" class="alert alert-success" v-show="status"> [[ status ]] </div>
+            <div id="status" class="alert alert-danger" v-show="status_error"> [[ status_error ]] </div>
             <div class="panel-heading">
                 <h3 class="section-heading">Add a Bucketlist Item</h3>
             </div>
@@ -48,7 +45,7 @@
                         <span v-show="!item.done==true">
                             <input type="checkbox" id="checkbox" v-model="checked=false" @click="itemDone(item.id)" lazy>
                         </span>
-                        <br >
+                        <br>
                         <input type="text" v-model="updated" placeholder="edit me" lazy>
                         <button class="btn btn-xs btn-warning " @click="updateItem($index, item.id)">Update</button>
                         <button class="btn btn-xs btn-danger " @click="deleteItem($index, item.id)">Delete</button>
@@ -61,10 +58,6 @@
     <br>
     <br>
 </section>
-<footer>
-    <div class="container ">
-        <div class="row ">
-            <div class="col-md-12 ">
-                {% endblock %} {% block vuejsfiles %}
-                <script src="{% static 'js/bucketlistitem.js' %} "></script>
-                {% endblock %}
+{% endblock %} {% block vuejsfiles %}
+<script src="{% static 'js/bucketlistitem.js' %} "></script>
+{% endblock %}

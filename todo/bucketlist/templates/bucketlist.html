@@ -1,7 +1,4 @@
-{% extends 'masterpage.html' %}
-{% load staticfiles %}
-{% block title %}Bucketlists{% endblock %}
-{% block navbar %}
+{% extends 'masterpage.html' %} {% load staticfiles %} {% block title %}Bucketlists{% endblock %} {% block navbar %}
 <li>
     <a class="navbar-brand page-scroll" href="/account/#!/login/" @click="logOut">Logout [[ username ]] </a>
 </li>
@@ -35,33 +32,29 @@
         <div class="col-md-6 " v-for="bucketlist in bucketlists">
             <div class="list-group ">
                 <div class="list-group-item ">
-                <a href="/bucketlist_items/" @click="goToItem(bucketlist)">
-                    <h4 >
-                        [[ bucketlist.name ]]
-                    </h4>
-                    <span class="badge">[[ bucketlist.items.length ]] items</span>
-        <br>
-        </a>
-        <br>
-        <!-- synced after "change" instead of "input" -->
-        <input type="text " v-model="updated " placeholder="edit me" lazy>
-        <button class="btn btn-xs btn-warning " @click="updateBucketlist($index, bucketlist.id) ">Update</button>
-        <button class="btn btn-xs btn-danger " @click="deleteBucketlist($index, bucketlist.id) ">Delete</button>
-        <br>
-        <br>
-    </div>
-    </div>
-    </div>
-    </span>
+                    <a href="/bucketlist_items/" @click="goToItem(bucketlist)">
+                        <h4 >
+                            [[ bucketlist.name ]]
+                        </h4>
+                        <span class="badge">[[ bucketlist.items.length ]] items</span>
+                        <br>
+                    </a>
+                    <br>
+                    <!-- synced after "change" instead of "input" -->
+                    <input type="text " v-model="updated " placeholder="edit me" lazy>
+                    <button class="btn btn-xs btn-warning " @click="updateBucketlist($index, bucketlist.id) ">Update</button>
+                    <button class="btn btn-xs btn-danger " @click="deleteBucketlist($index, bucketlist.id) ">Delete</button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+        </span>
     </div>
     <br>
     <br>
     <br>
 </section>
-<footer>
-    <div class="container ">
-        <div class="row ">
-            <div class="col-md-12 ">
-                {% endblock %} {% block vuejsfiles %}
-                <script src="{% static 'js/bucketlist.js' %} "></script>
-                {% endblock %}
+{% endblock %} {% block vuejsfiles %}
+<script src="{% static 'js/bucketlist.js' %} "></script>
+{% endblock %}

@@ -1,22 +1,18 @@
-{% extends 'masterpage.html' %}
-{% block title %}HOME{% endblock %}
-{% block content %}
+{% extends 'masterpage.html' %} {% load staticfiles %} {% block title %}HOME{% endblock %} {% block content %}
 <!-- Header -->
 <header>
     <div class="container">
-        <div class="intro-text">
+        <div id="home" class="intro-text">
             <div class="intro-heading">my bucketlist</div>
             <div class="intro-lead-in">Put it down, then work it out
                 <br>
                 <br>
             </div>
             <br>
-            <a href="/account/" class="btn btn-xl">Let's Begin</a>
+            <span v-else>
+                <a href="/account/" class="btn btn-xl">Let's Begin</a>
+            </span>
         </div>
     </div>
 </header>
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                {% endblock %}
+{% endblock %}

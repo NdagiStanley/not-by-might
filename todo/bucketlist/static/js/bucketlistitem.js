@@ -67,16 +67,18 @@ new Vue({
                 create_item_url = '/api/v1/bucketlists/' + list + '/items/'
                 this.$http.post(create_item_url, this.item).then(function(response) {
                     this.items.push(this.item);
+                    this.$set('status_error', '');
                     this.$set('status', 'Item added');
                     this.$set('iAmNotDone', 'TRUE');
                     this.item = { title: ''};
                     setTimeout(function() {
                         window.location.assign("/bucketlist_items/");
                     }, 500);
+                }, function(response) {
+                    this.$set('status_error', 'Error! Please try again');
                 });
-            }
-            else {
-                console.log(this.item);
+            } else {
+                this.$set('status_error', 'You have not entered any item');
             }
         },
 
@@ -89,6 +91,8 @@ new Vue({
                     setTimeout(function() {
                         window.location.assign("/bucketlist_items/");
                     }, 500);
+            }, function(response) {
+                this.$set('status_error', 'Error! Please try again');
             });
         },
 
@@ -102,6 +106,8 @@ new Vue({
                         setTimeout(function() {
                             window.location.assign("/bucketlist_items/");
                         }, 500);
+                }, function(response) {
+                    this.$set('status_error', 'Error! Please try again');
                 });
             }
         },
@@ -114,6 +120,8 @@ new Vue({
                     setTimeout(function() {
                         window.location.assign("/bucketlist_items/");
                     }, 500);
+            }, function(response) {
+                this.$set('status_error', 'Error! Please try again');
             });
         },
 
@@ -125,6 +133,8 @@ new Vue({
                     setTimeout(function() {
                         window.location.assign("/bucketlist_items/");
                     }, 500);
+            }, function(response) {
+                this.$set('status_error', 'Error! Please try again');
             });
         }
     }

@@ -61,12 +61,15 @@ new Vue({
                     created_by: localStorage.getItem('username')
                 };
                 this.$http.post('/api/v1/bucketlists/', bucketlist).then(function(response) {
+                    this.$set('status_error', '');
                     this.bucketlists.push(this.bucketlist);
                     this.$set('status', 'Bucketlist added');
                     setTimeout(function() {
                         window.location.assign("/bucketlists/")
                     }, 500);
                     this.bucketlist = { name: '' };
+                }, function(response) {
+                    this.$set('status_error', 'Error! Please try again');
                 });
             } else {
                 this.$set('status_error', 'You have not entered any name');
@@ -81,6 +84,8 @@ new Vue({
                 setTimeout(function() {
                     window.location.assign("/bucketlists/")
                 }, 500);
+            }, function(response) {
+                this.$set('status_error', 'Error! Please try again');
             });
         },
 
@@ -93,6 +98,8 @@ new Vue({
                     setTimeout(function() {
                         window.location.assign("/bucketlists/")
                     }, 500);
+                }, function(response) {
+                    this.$set('status_error', 'Error! Please try again');
                 });
             }
         },

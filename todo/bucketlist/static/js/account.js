@@ -1,5 +1,4 @@
 Vue.config.delimiters = ["[[", "]]"]
-
 new Vue({
 
     // We want to target the section with an id of 'app'
@@ -26,14 +25,14 @@ var registerComponent = Vue.extend({
             // Post on Register endpoint in DRF
             this.$http.post('/api/v1/auth/register/', this.$data.user).then(function(response) {
                 this.$set('status', 'Signing you up');
-                this.$http.post('/api/v1/auth/login/', {username: this.$data.user.username, password: this.$data.user.password}).then(function(response) {
+                this.$http.post('/api/v1/auth/login/', { username: this.$data.user.username, password: this.$data.user.password }).then(function(response) {
                     localStorage.setItem('id_token', response.data.token);
                     localStorage.setItem('username', this.$data.user.username);
                     this.$set('status', 'Signing you in');
                     setTimeout(function() {
                         window.location.assign("/bucketlists/")
                     }, 1000);
-                  });
+                });
             }, function(response) {
                 this.$set('status_error', 'That username already exists');
                 setTimeout(function() {
@@ -50,7 +49,7 @@ var loginComponent = Vue.extend({
         signIn: function() {
             this.$http.post('/api/v1/auth/login/', this.$data.user).then(function(response) {
                 // Set status
-                this.$set('status', 'Loginning you in');
+                this.$set('status', 'Logging you in');
                 localStorage.setItem('id_token', response.data.token);
                 localStorage.setItem('username', this.$data.user.username);
                 setTimeout(function() {

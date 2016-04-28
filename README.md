@@ -37,9 +37,10 @@ You'll need to have the following installed in your local machine to run this ap
 
 4. Create a Postgresql database (it's best you use **PGAdmin**). Take note of the **name**, **user**, **password** and **port**.
 
-5. Open the project in your preferred text editor, navigate to the **settings.py** which is in **_todo/todo/_** directory and paste the following snippet on line **120**. Fill the _name_, _user_, _password_ and _port_ (without the []) in the snippet
+5. Open the project in your preferred text editor, navigate to the **settings.py** which is in **_todo/todo/_** directory and edit the fields surrounded by [] according to the following snippet starting at line **120**. Fill the _name_, _user_, _password_ and _port_ (without the []) in the snippet
 
   ```python
+    ....
     else:
             DATABASES = {
                 'default': {
@@ -51,15 +52,8 @@ You'll need to have the following installed in your local machine to run this ap
                     'PORT': '[port]',
                 }
             }
+    ....
 
-  ```
-  To continue developing the project edit the following as well. (This is at line **28**)
-
-  ```python
-    # SECURITY WARNING: don't run with debug turned on in production!
-      DEBUG = True
-
-      ALLOWED_HOSTS = []
   ```
 
 6. Setup the application
@@ -139,9 +133,9 @@ RUN ```python manage.py test```
 
 ## Deployment
 
-You might want to deploy this project. Well, the application is ready fro deployment to heroku. After installing _heroku toolbelt_;
+You might want to deploy this project. Well, the application is ready fro deployment to heroku. After installing _heroku toolbelt_; do the following (Ensure you are in the root folder):
 
-RUN ```heroku local web``` to check it how it will look after deployment
+RUN ```heroku local web``` and go to to check it how it will look after deployment
 
 RUN ```heroku login``` and enter your credentials.
 

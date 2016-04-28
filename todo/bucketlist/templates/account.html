@@ -82,21 +82,7 @@
     <br>
     <p><a v-link="{ path: '/', replace: true }">You don't have an account? Register</a></p>
 </template>
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <a href="/admin/" target="_blank">ADMIN</a>
-                <br>
-                <a href="/api/v1/auth/login/" target="_blank">API</a>
-                <br>
-                <a href="/api/v1/docs/" target="_blank">DOCS</a>
-                <br>
-                <a href="https://nbm-doit.mybalsamiq.com/projects/nbm/Start%20page" target="_blank">WIREFRAME</a>
-                <br>
-                <a href="https://color.adobe.com/abstract-color-theme-7938072/" target="_blank">COLOR THEME USED</a>
-                <br>
-                {% endblock %}
-                {% block vuejsfiles %}
-                    <script src="{% static 'js/account.js' %}"></script>
-                {% endblock %}
+{% endblock %}
+{% block vuejsfiles %}
+<script src="{% static 'js/account.js' %}"></script>
+{% endblock %}
