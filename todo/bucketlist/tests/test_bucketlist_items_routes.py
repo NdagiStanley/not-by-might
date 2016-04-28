@@ -17,7 +17,7 @@ class BucketlistItemsTests(APITestCase):
         # Login user md
         user = {'username': 'md', 'password': 'me'}
         response = self.client.post(reverse('login'), user, format='json')
-        self.token = 'JWT ' + response.data.get('token')
+        self.token = 'Token ' + response.data.get('token')
 
     def test_post_bucketlists_items_list(self):
         """Test that we can create items via /api/v1/bucketlists/<id>/items route"""

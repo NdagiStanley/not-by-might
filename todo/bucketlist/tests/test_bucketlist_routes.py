@@ -16,7 +16,7 @@ class BucketlistTests(APITestCase):
         # Login user md
         user = {'username': 'md', 'password': 'me'}
         response = self.client.post(reverse('login'), user, format='json')
-        self.token = 'JWT ' + response.data.get('token')
+        self.token = 'Token ' + response.data.get('token')
 
     def test_get_bucketlists_list(self):
         """Test that we can retrieve bucketlists via /api/v1/bucketlists/ route"""

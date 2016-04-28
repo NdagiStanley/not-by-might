@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import sys
+import datetime
 import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,12 +24,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '0k0q$w(@py(*dfkpeszm-rje(j6d(!!$8)^q#vf2j2#yx8p**h'
-# SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -99,6 +99,12 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 20,
 }
 
+# Custom settings for JWT
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=1800),
+    'JWT_AUTH_HEADER_PREFIX': 'Token',
+}
+
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -110,20 +116,12 @@ if 'test' in sys.argv:
             'NAME': 'testdatabase',
         }
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'bucketlist',
-            'USER': 'postgres',
-            'PASSWORD': '@ndel@2o15',
-            'HOST': '127.0.0.1',
-            'PORT': '5432',
-        }
-    }
+
+
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
