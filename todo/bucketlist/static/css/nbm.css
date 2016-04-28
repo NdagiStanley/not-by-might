@@ -262,7 +262,7 @@ fieldset[disabled] .btn-xl.active {
 }
 
 header {
-    background-image: url('../images/head.png');
+    background-image: url('http://i.imgur.com/yTejaCS.jpg');
     background-repeat: none;
     background-attachment: scroll;
     background-position: center center;
@@ -319,7 +319,7 @@ header .intro-text .intro-heading {
 }
 
 section#app {
-    background-image: url('../images/head.png');
+    background-image: url('http://s32.postimg.org/k0xmng85t/head.jpg');
     background-repeat: none;
     background-attachment: scroll;
     background-position: center center;
@@ -336,7 +336,7 @@ section#app a {
 }
 
 section#all_bucketlists {
-    background-image: url('../images/head.png');
+    background-image: url('http://s32.postimg.org/k0xmng85t/head.jpg');
     background-repeat: none;
     background-attachment: scroll;
     background-position: center center;
@@ -354,7 +354,7 @@ h3 {
 }
 
 section#all_items {
-    background-image: url('../images/head.png');
+    background-image: url('http://s32.postimg.org/k0xmng85t/head.jpg');
     background-repeat: none;
     background-attachment: scroll;
     background-position: center center;

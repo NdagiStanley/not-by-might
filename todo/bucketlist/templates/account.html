@@ -1,7 +1,4 @@
-{% extends 'masterpage.html' %}
-{% load staticfiles %}
-{% block title %}ACCOUNT{% endblock %}
-{% block content %}
+{% extends 'masterpage.html' %} {% load staticfiles %} {% block title %}ACCOUNT{% endblock %} {% block content %}
 <!-- Header -->
 <section id="app">
     <div class="container">
@@ -82,7 +79,6 @@
     <br>
     <p><a v-link="{ path: '/', replace: true }">You don't have an account? Register</a></p>
 </template>
-{% endblock %}
-{% block vuejsfiles %}
+{% endblock %} {% block vuejsfiles %}
 <script src="{% static 'js/account.js' %}"></script>
 {% endblock %}
