@@ -47,6 +47,24 @@ new Vue({
             Vue.http.headers.common['Authorization'] = 'Token ' + localStorage.getItem('id_token');
             this.$http.get('/api/v1/bucketlists/').then(function(response) {
                 this.$set('bucketlists', response.data.results);
+                if (response.data.results.length == 0) {
+                    this.$set('list', []);
+                }
+            }, function(response) {
+                window.location.assign("/404/");
+            });
+        },
+
+        // A method dedicated to retrieving and setting some data
+        searchBucketlists: function() {
+            this.$http.get('/api/v1/bucketlists/?q=' + this.searchParam).then(function(response) {
+                this.$set('bucketlists', response.data.results);
+                if (response.data.results.length == 0) {
+                    this.$set('status_error', 'Error! No bucketlists match that search');
+                    setTimeout(function() {
+                        window.location.assign("/bucketlists/")
+                    }, 500);
+                }
             }, function(response) {
                 window.location.assign("/404/");
             });
