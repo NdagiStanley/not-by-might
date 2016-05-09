@@ -20,23 +20,24 @@
             <h1>You have no bucketlists. <br >Create your first one below :)</h1>
             </div>
         </span>
-
-        <!-- Search through the Bucketlists -->
-        <div class="col-md-2 col-lg-offset-5">
-            <form name="search" id="search" @submit.prevent="searchBucketlists">
-                <div class="input-group col-md-12">
-                    <input class="form-control" v-model="searchParam">
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary" type="button">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </span>
-                </div>
-            </form>
-        </div>
         <div class="col-md-4 col-lg-offset-4">
-            <div id="status" class="alert alert-success" v-show="status"> [[ status ]] </div>
-            <div id="status" class="alert alert-danger" v-show="status_error"> [[ status_error ]] </div>
+            <div id="notification">
+                <div id="status" class="alert alert-success" v-show="status"> [[ status ]] </div>
+                <div id="status" class="alert alert-danger" v-show="status_error"> [[ status_error ]] </div>
+            </div>
+            <!-- Search through the Bucketlists -->
+            <div>
+                <form name="search" id="search" @submit.prevent="searchBucketlists">
+                    <div class="input-group col-md-6 col-lg-offset-3">
+                        <input class="form-control" v-model="searchParam" placeholder="Search">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
             <div class="panel-heading">
                 <h3 class="section-heading">Add a Bucketlist</h3>
             </div>

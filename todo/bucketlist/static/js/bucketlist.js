@@ -61,9 +61,8 @@ new Vue({
                 this.$set('bucketlists', response.data.results);
                 if (response.data.results.length == 0) {
                     this.$set('status_error', 'Error! No bucketlists match that search');
-                    setTimeout(function() {
-                        this.$set('status_error', '');
-                    }, 500);
+                } else {
+                    this.$set('status_error', '');
                 }
             }, function(response) {
                 window.location.assign("/404/");
@@ -79,10 +78,13 @@ new Vue({
                     created_by: localStorage.getItem('username')
                 };
                 this.$http.post('/api/v1/bucketlists/', bucketlist).then(function(response) {
-                    this.$set('status_error', '');
                     this.bucketlists.push(this.bucketlist);
+                    this.$set('bucketlists.items.length', 0);
+                    this.$http.get('/api/v1/bucketlists/').then(function(response) {
+                        this.$set('bucketlists', response.data.results);
+                    });
                     this.$set('status', 'Bucketlist added');
-                    setTimeout(function() {
+                    setTimeout(function(){
                         this.$set('status', '');
                     }, 500);
                     this.bucketlist = { name: '' };
