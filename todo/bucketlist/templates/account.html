@@ -1,4 +1,7 @@
-{% extends 'masterpage.html' %} {% load staticfiles %} {% block title %}ACCOUNT{% endblock %} {% block content %}
+{% extends 'masterpage.html' %}
+{% load staticfiles %}
+{% block title %}ACCOUNT{% endblock %}
+{% block content %}
 <!-- Header -->
 <section id="app">
     <div class="container">
@@ -79,6 +82,23 @@
     <br>
     <p><a v-link="{ path: '/', replace: true }">You don't have an account? Register</a></p>
 </template>
-{% endblock %} {% block vuejsfiles %}
+{% endblock %}
+{% block vuejsfiles %}
 <script src="{% static 'js/account.js' %}"></script>
+{% endblock %}
+{% block footer %}
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <span class="copyright">Copyright &copy; NBM 2016</span>
+                <br>
+                <h2>Tools leveraged</h2>
+                <span>Django, DRF (Django REST Framework), VueJS, Bootstrap</span>
+                <br>
+                <span><a class="fa fa-github" href="https://github.com/NdagiStanley/not-by-might" target="_blank"></a></span>
+            </div>
+        </div>
+    </div>
+</footer>
 {% endblock %}

@@ -1,8 +1,16 @@
-{% extends 'masterpage.html' %} {% load staticfiles %} {% block title %}Bucketlists{% endblock %} {% block navbar %}
-<li>
-    <a class="navbar-brand page-scroll" href="/account/#!/login/" @click="logOut">Logout [[ username ]] </a>
-</li>
-{% endblock %} {% block content %}
+{% extends 'masterpage.html' %}
+{% load staticfiles %}
+{% block title %}Bucketlists{% endblock %}
+{% block navbar %}
+<div id="topbar">
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a class="navbar-brand page-scroll" href="/account/#!/login/" @click="logOut">Logout [[ username ]] </a>
+        </li>
+    </ul>
+</div>
+{% endblock %}
+{% block content %}
 <!-- Header -->
 <section id="all_bucketlists">
     <div id="bucketlists">
@@ -12,6 +20,20 @@
             <h1>You have no bucketlists. <br >Create your first one below :)</h1>
             </div>
         </span>
+
+        <!-- Search through the Bucketlists -->
+        <div class="col-md-2 col-lg-offset-5">
+            <form name="search" id="search" @submit.prevent="searchBucketlists">
+                <div class="input-group col-md-12">
+                    <input class="form-control" v-model="searchParam">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </div>
         <div class="col-md-4 col-lg-offset-4">
             <div id="status" class="alert alert-success" v-show="status"> [[ status ]] </div>
             <div id="status" class="alert alert-danger" v-show="status_error"> [[ status_error ]] </div>
@@ -27,18 +49,10 @@
                 </form>
             </div>
         </div>
-        <!-- Search through the Bucketlists -->
-        <div class="col-md-1">
-            <form name="search" id="search" @submit.prevent="searchBucketlists">
-                <div class="form-group">
-                    <input class="form-control" v-model="searchParam">
-                </div>
-                <button class="btn btn-primary">Search</button>
-            </form>
-        </div>
         <!-- Display bucketlists -->
         <span v-else>
         <div class="col-md-6 " v-for="bucketlist in bucketlists">
+        <br >
             <div class="list-group ">
                 <div class="list-group-item ">
                     <a href="/bucketlist_items/" @click="goToItem(bucketlist)">

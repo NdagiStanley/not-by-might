@@ -1,8 +1,16 @@
-{% extends 'masterpage.html' %} {% load staticfiles %} {% block title %}Items{% endblock %} {% block navbar %}
-<li>
-    <a class="navbar-brand page-scroll" href="/account/#!/login/" @click="logOut">Logout [[ username ]] </a>
-</li>
-{% endblock %} {% block content %}
+{% extends 'masterpage.html' %}
+{% load staticfiles %}
+{% block title %}Items{% endblock %}
+{% block navbar %}
+<div id="topbar">
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a class="navbar-brand page-scroll" href="/account/#!/login/" @click="logOut">Logout [[ username ]] </a>
+        </li>
+    </ul>
+</div>
+{% endblock %}
+{% block content %}
 <!-- Header -->
 <section id="all_items">
     <div id="bucketlistitem">
@@ -32,6 +40,7 @@
         </div>
         <!-- Display items -->
         <span v-else>
+            <br >
             <div class="col-md-4 col-md-offset-4 " v-for="item in items">
                 <div class="list-group ">
                     <div class="list-group-item ">

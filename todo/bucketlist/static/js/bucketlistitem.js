@@ -2,8 +2,8 @@ Vue.config.delimiters = ["[[", "]]"]
 const list = localStorage.getItem('list');
 new Vue({
 
-    // We want to target the div with an id of 'navbar'
-    el: '#navbar',
+    // We want to target the div with an id of 'topbar'
+    el: '#topbar',
 
     ready: function() {
         // When the application loads, we want to call the method that initializes

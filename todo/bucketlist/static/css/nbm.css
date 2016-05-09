@@ -1,3 +1,8 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
     overflow-x: hidden;
     font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -209,7 +214,7 @@ fieldset[disabled] .btn-xl.active {
 }
 
 .navbar-default .nav li a {
-    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, cursive;
     text-transform: uppercase;
     font-weight: 400;
     letter-spacing: 1px;
@@ -218,7 +223,7 @@ fieldset[disabled] .btn-xl.active {
 
 .navbar-default .nav li a:hover,
 .navbar-default .nav li a:focus {
-    color: #fed136;
+    color: grey;
     outline: none;
 }
 
@@ -411,8 +416,10 @@ section h3.section-subheading {
 }
 
 footer {
+    position: relative;
     padding: 25px 0;
     text-align: center;
+    width: 100%;
 }
 
 footer span.copyright {

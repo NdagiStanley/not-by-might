@@ -1,6 +1,6 @@
 Vue.config.delimiters = ["[[", "]]"]
 new Vue({
-    el: '#navbar',
+    el: '#topbar',
 
     ready: function() {
         // When the application loads, we want to call the method that initializes
@@ -55,7 +55,7 @@ new Vue({
             });
         },
 
-        // A method dedicated to retrieving and setting some data
+        // A method dedicated to searching through data
         searchBucketlists: function() {
             this.$http.get('/api/v1/bucketlists/?q=' + this.searchParam).then(function(response) {
                 this.$set('bucketlists', response.data.results);
