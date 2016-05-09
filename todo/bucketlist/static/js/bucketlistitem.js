@@ -89,7 +89,7 @@ new Vue({
                     this.$set('item', this.updated);
                     this.$set('status', 'Item updated');
                     setTimeout(function() {
-                        window.location.assign("/bucketlist_items/");
+                        this.$set('status', '');
                     }, 500);
             }, function(response) {
                 this.$set('status_error', 'Error! Please try again');
@@ -104,7 +104,7 @@ new Vue({
                         this.items.$remove(id);
                         this.$set('status', 'Item deleted');
                         setTimeout(function() {
-                            window.location.assign("/bucketlist_items/");
+                            this.$set('status', '');
                         }, 500);
                 }, function(response) {
                     this.$set('status_error', 'Error! Please try again');
@@ -131,7 +131,7 @@ new Vue({
                 { done: false }).then(function(response) {
                     this.$set('status', 'Too bad, it\'s not done');
                     setTimeout(function() {
-                        window.location.assign("/bucketlist_items/");
+                        this.$set('status', '');
                     }, 500);
             }, function(response) {
                 this.$set('status_error', 'Error! Please try again');

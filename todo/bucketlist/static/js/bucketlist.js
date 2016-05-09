@@ -62,7 +62,7 @@ new Vue({
                 if (response.data.results.length == 0) {
                     this.$set('status_error', 'Error! No bucketlists match that search');
                     setTimeout(function() {
-                        window.location.assign("/bucketlists/")
+                        this.$set('status_error', '');
                     }, 500);
                 }
             }, function(response) {
@@ -83,7 +83,7 @@ new Vue({
                     this.bucketlists.push(this.bucketlist);
                     this.$set('status', 'Bucketlist added');
                     setTimeout(function() {
-                        window.location.assign("/bucketlists/")
+                        this.$set('status', '');
                     }, 500);
                     this.bucketlist = { name: '' };
                 }, function(response) {
@@ -100,7 +100,7 @@ new Vue({
                 this.$set('bucketlist', this.updated);
                 this.$set('status', 'Bucketlist updated');
                 setTimeout(function() {
-                    window.location.assign("/bucketlists/")
+                    this.$set('status', '');
                 }, 500);
             }, function(response) {
                 this.$set('status_error', 'Error! Please try again');
@@ -114,7 +114,7 @@ new Vue({
                     this.bucketlists.$remove(id);
                     this.$set('status', 'Bucketlist deleted');
                     setTimeout(function() {
-                        window.location.assign("/bucketlists/")
+                        this.$set('status', '');
                     }, 500);
                 }, function(response) {
                     this.$set('status_error', 'Error! Please try again');
