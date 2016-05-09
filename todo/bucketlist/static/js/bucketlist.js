@@ -13,7 +13,6 @@ new Vue({
             this.$set('username', localStorage.getItem('username'));
             this.$set('token', localStorage.getItem('id_token'));
         },
-
         logOut: function() {
             localStorage.setItem('id_token', '');
         }
@@ -102,7 +101,7 @@ new Vue({
                 this.$set('bucketlist', this.updated);
                 this.$set('status', 'Bucketlist updated');
                 setTimeout(function() {
-                    this.$set('status', '');
+                    window.location.assign("/bucketlists/");
                 }, 500);
             }, function(response) {
                 this.$set('status_error', 'Error! Please try again');
@@ -116,12 +115,22 @@ new Vue({
                     this.bucketlists.$remove(id);
                     this.$set('status', 'Bucketlist deleted');
                     setTimeout(function() {
-                        this.$set('status', '');
+                        window.location.assign("/bucketlists/");
                     }, 500);
                 }, function(response) {
                     this.$set('status_error', 'Error! Please try again');
                 });
             }
+        },
+
+        showSearch: function() {
+            this.$set('search', true);
+            this.$set('notsearch', true);
+        },
+
+        showAdd: function() {
+            this.$set('search', false);
+            this.$set('notsearch', false);
         },
 
         goToItem: function(list) {

@@ -25,8 +25,28 @@
                 <div id="status" class="alert alert-success" v-show="status"> [[ status ]] </div>
                 <div id="status" class="alert alert-danger" v-show="status_error"> [[ status_error ]] </div>
             </div>
+            <div class="panel-heading">
+                <h3 class="section-heading">
+                <button v-show="!search" class="btn btn-primary" @click="showSearch">
+                    <i class="fa fa-search"></i>
+                </button>
+                <button v-show="notsearch" class="btn btn-primary" @click="showAdd">
+                    Add a Bucketlist
+                </button>
+                </h3>
+            </div>
+            <div class="panel-body" v-show="!search">
+                <form name="add" id="Account" @submit.prevent="addBucketlist">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="Bucketlist Name" v-model="bucketlist.name">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary">Create</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
             <!-- Search through the Bucketlists -->
-            <div>
+            <div v-else>
                 <form name="search" id="search" @submit.prevent="searchBucketlists">
                     <div class="input-group col-md-6 col-lg-offset-3">
                         <input class="form-control" v-model="searchParam" placeholder="Search">
@@ -36,17 +56,6 @@
                             </button>
                         </span>
                     </div>
-                </form>
-            </div>
-            <div class="panel-heading">
-                <h3 class="section-heading">Add a Bucketlist</h3>
-            </div>
-            <div class="panel-body">
-                <form name="signup" id="Account" @submit.prevent="addBucketlist">
-                    <div class="form-group">
-                        <input class="form-control" placeholder="Bucketlist Name" v-model="bucketlist.name">
-                    </div>
-                    <button class="btn btn-primary">Create</button>
                 </form>
             </div>
         </div>

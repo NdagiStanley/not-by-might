@@ -55,7 +55,6 @@ new Vue({
                 this.$set('items', response.data.items);
                 this.$set('list', response.data.name);
             }, function(response) {
-                console.log(response.status);
                 this.$set('auth', false);
                 window.location.href = "/404/";
             });
@@ -72,7 +71,7 @@ new Vue({
                     this.$set('iAmNotDone', 'TRUE');
                     this.item = { title: ''};
                     setTimeout(function() {
-                        window.location.assign("/bucketlist_items/");
+                        this.$set('status', '');
                     }, 500);
                 }, function(response) {
                     this.$set('status_error', 'Error! Please try again');
@@ -89,7 +88,7 @@ new Vue({
                     this.$set('item', this.updated);
                     this.$set('status', 'Item updated');
                     setTimeout(function() {
-                        this.$set('status', '');
+                        window.location.assign("/bucketlist_items/");
                     }, 500);
             }, function(response) {
                 this.$set('status_error', 'Error! Please try again');
@@ -104,7 +103,7 @@ new Vue({
                         this.items.$remove(id);
                         this.$set('status', 'Item deleted');
                         setTimeout(function() {
-                            this.$set('status', '');
+                            window.location.assign("/bucketlist_items/");
                         }, 500);
                 }, function(response) {
                     this.$set('status_error', 'Error! Please try again');
