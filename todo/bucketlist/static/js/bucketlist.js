@@ -133,6 +133,8 @@ new Vue({
             this.$set('search', true);
             this.$set('notsearch', true);
             this.$set('bucketlists', []);
+            this.$set('status_error', '');
+            this.$set('list', [bucketlists]);
             this.$set('startSearch', true);
         },
 
@@ -142,6 +144,7 @@ new Vue({
             this.$set('status_error', '');
             this.$set('status', '');
             this.$set('searchParam', '');
+            this.$set('startSearch', false);
             this.fetchBucketlists();
         },
 

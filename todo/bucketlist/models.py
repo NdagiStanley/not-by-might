@@ -36,4 +36,4 @@ class BucketlistItem(models.Model):
         return '<Item {}>'.format(self.title)
 
     class Meta:
-        ordering = ['-date_modified']
+        ordering = ['done', '-date_modified']

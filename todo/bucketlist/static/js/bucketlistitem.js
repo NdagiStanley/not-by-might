@@ -51,11 +51,9 @@ new Vue({
         fetchItems: function() {
             Vue.http.headers.common['Authorization'] = 'Token ' + localStorage.getItem('id_token');
             this.$http.get('/api/v1/bucketlists/' + list).then(function(response) {
-                this.$set('auth', true);
                 this.$set('items', response.data.items);
                 this.$set('list', response.data.name);
             }, function(response) {
-                this.$set('auth', false);
                 window.location.href = "/404/";
             });
         },
@@ -69,12 +67,11 @@ new Vue({
                     this.$set('status_error', '');
                     this.$set('status', 'Item added');
                     this.$set('iAmNotDone', 'TRUE');
+                    this.$set('status', '');
                     this.item = { title: ''};
-                    setTimeout(function() {
-                        this.$set('status', '');
-                    }, 500);
+                    this.fetchItems();
                 }, function(response) {
-                    this.$set('status_error', 'Error! Please try again');
+                    window.location.assign("/bucketlist_items/");
                 });
             } else {
                 this.$set('status_error', 'You have not entered any item');
@@ -83,16 +80,20 @@ new Vue({
 
         // Updates an item
         updateItem: function(id, item_id) {
-            this.$http.put('/api/v1/bucketlists/' + list + '/items/' + item_id,
-                {title: this.updated}).then(function(response) {
-                    this.$set('item', this.updated);
-                    this.$set('status', 'Item updated');
-                    setTimeout(function() {
-                        window.location.assign("/bucketlist_items/");
-                    }, 500);
-            }, function(response) {
-                this.$set('status_error', 'Error! Please try again');
-            });
+            if (this.updated) {
+                this.$http.put('/api/v1/bucketlists/' + list + '/items/' + item_id,
+                    {title: this.updated}).then(function(response) {
+                        this.$set('item', this.updated);
+                        this.$set('updated', '');
+                        this.$set('status', 'Item updated');
+                        this.$set('status', '');
+                        this.fetchItems();
+                }, function(response) {
+                    window.location.assign("/404/");
+                });
+            } else {
+                this.$set('status_error', 'Please enter the title you want updated')
+            }
         },
 
         // Deletes an item
@@ -102,11 +103,10 @@ new Vue({
                 this.$http.delete('/api/v1/bucketlists/' + list + '/items/' + item_id).then(function(response) {
                         this.items.$remove(id);
                         this.$set('status', 'Item deleted');
-                        setTimeout(function() {
-                            window.location.assign("/bucketlist_items/");
-                        }, 500);
+                        this.$set('status', '');
+                        this.fetchItems();
                 }, function(response) {
-                    this.$set('status_error', 'Error! Please try again');
+                    window.location.assign("/404/");
                 });
             }
         },
@@ -116,9 +116,9 @@ new Vue({
             this.$http.put('/api/v1/bucketlists/' + list + '/items/' + item_id,
                 { done: true }).then(function(response) {
                     this.$set('status', 'Way to go, on completing the task');
-                    setTimeout(function() {
-                        window.location.assign("/bucketlist_items/");
-                    }, 500);
+                    this.$set('status', '');
+                    this.$set('status_error', '');
+                    this.fetchItems();
             }, function(response) {
                 this.$set('status_error', 'Error! Please try again');
             });
@@ -129,9 +129,9 @@ new Vue({
             this.$http.put('/api/v1/bucketlists/' + list + '/items/' + item_id,
                 { done: false }).then(function(response) {
                     this.$set('status', 'Too bad, it\'s not done');
-                    setTimeout(function() {
-                        this.$set('status', '');
-                    }, 500);
+                    this.$set('status', '');
+                    this.$set('status_error', '');
+                    this.fetchItems();
             }, function(response) {
                 this.$set('status_error', 'Error! Please try again');
             });
