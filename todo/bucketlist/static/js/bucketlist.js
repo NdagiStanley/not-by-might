@@ -2,6 +2,17 @@ Vue.config.delimiters = ["[[", "]]"]
 new Vue({
     el: '#topbar',
 
+    data: {
+        username: '',
+        token: '',
+        bucketlists: [],
+        search: false,
+        notsearch: false,
+        status_error: '',
+        list: '',
+        startSearch: false,
+    },
+
     ready: function() {
         // When the application loads, we want to call the method that initializes
         // some data
@@ -15,7 +26,15 @@ new Vue({
         },
         logOut: function() {
             localStorage.setItem('id_token', '');
-        }
+        },
+        showSearch: function() {
+            this.$set('search', true);
+            Vue.set(this.data, 'notsearch', true);
+            this.$set('bucketlists', []);
+            this.$set('status_error', '');
+            this.$set('list', [bucketlists]);
+            this.$set('startSearch', true);
+        },
     }
 });
 
@@ -60,7 +79,7 @@ new Vue({
             this.$http.get('/api/v1/bucketlists/?q=' + this.searchParam).then(function(response) {
                 this.$set('bucketlists', response.data.results);
                 this.$set('startSearch', false);
-                this.$set('startResults', true);
+                this.$set('searchResults', true);
                 this.$set('text', this.searchParam);
                 this.$set('searchParam', '');
                 if (response.data.results.length == 0) {
@@ -131,22 +150,13 @@ new Vue({
             }
         },
 
-        showSearch: function() {
-            this.$set('search', true);
-            this.$set('notsearch', true);
-            this.$set('bucketlists', []);
-            this.$set('status_error', '');
-            this.$set('list', [bucketlists]);
-            this.$set('startSearch', true);
-        },
-
         showAdd: function() {
             this.$set('search', false);
             this.$set('notsearch', false);
             this.$set('status_error', '');
             this.$set('status', '');
             this.$set('searchParam', '');
-            this.$set('startResults', '');
+            this.$set('searchResults', '');
             this.$set('startSearch', false);
             this.fetchBucketlists();
         },
