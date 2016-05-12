@@ -37,7 +37,7 @@
             </div>
             <div class="panel-body" v-show="!search">
                 <form name="add" id="Account" @submit.prevent="addBucketlist">
-                    <div class="input-group">
+                    <div class="input-group col-md-8 col-lg-offset-2">
                         <input class="form-control" placeholder="Bucketlist Name" v-model="bucketlist.name">
                         <span class="input-group-btn">
                             <button class="btn btn-primary">Create</button>
@@ -74,14 +74,24 @@
                     </a>
                     <br>
                     <!-- synced after "change" instead of "input" -->
+                    <form class="col-md-11"  @submit.prevent="updateBucketlist($index, bucketlist.id)">
                     <input type="text " v-model="updated " placeholder="edit me" lazy>
                     <button class="btn btn-xs btn-warning " @click="updateBucketlist($index, bucketlist.id) ">Update</button>
-                    <button class="btn btn-xs btn-danger " @click="deleteBucketlist($index, bucketlist.id) ">Delete</button>
+                    </form>
+                    <button class="btn btn-xs btn-danger col-md-1" @click="deleteBucketlist($index, bucketlist.id) ">
+                        <i class="fa fa-trash-o"></i>
+                    </button>
                     <br>
                     <br>
                 </div>
             </div>
         </div>
+        </span>
+        <span v-show="startSearch">
+            <div class="col-md-12">
+                <h1>Enter a search term and browse</h1>
+                <i class="fa fa-search fa-5x"></i>
+            </div>
         </span>
     </div>
     <br>

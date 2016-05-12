@@ -28,7 +28,8 @@ new Vue({
     data: {
         bucketlist: { name: '' },
         bucketlists: [],
-        user: ''
+        user: '',
+        list: [bucketlists]
     },
 
     // Anything within the ready function will run when the application loads
@@ -58,6 +59,8 @@ new Vue({
         searchBucketlists: function() {
             this.$http.get('/api/v1/bucketlists/?q=' + this.searchParam).then(function(response) {
                 this.$set('bucketlists', response.data.results);
+                this.$set('startSearch', false);
+                this.$set('searchParam', '');
                 if (response.data.results.length == 0) {
                     this.$set('status_error', 'Error! No bucketlists match that search');
                 } else {
@@ -81,14 +84,14 @@ new Vue({
                     this.$set('bucketlists.items.length', 0);
                     this.$http.get('/api/v1/bucketlists/').then(function(response) {
                         this.$set('bucketlists', response.data.results);
+                        this.$set('list', response.data.results);
                     });
+                    // Status timeout needs work-around
                     this.$set('status', 'Bucketlist added');
-                    setTimeout(function(){
-                        this.$set('status', '');
-                    }, 500);
+                    this.$set('status', '');
                     this.bucketlist = { name: '' };
                 }, function(response) {
-                    this.$set('status_error', 'Error! Please try again');
+                    window.location.assign("/404/");
                 });
             } else {
                 this.$set('status_error', 'You have not entered any name');
@@ -97,15 +100,19 @@ new Vue({
 
         // Updates a bucketlist
         updateBucketlist: function(id, list_id) {
-            this.$http.put('/api/v1/bucketlists/' + list_id, { name: this.updated }).then(function(response) {
-                this.$set('bucketlist', this.updated);
-                this.$set('status', 'Bucketlist updated');
-                setTimeout(function() {
-                    window.location.assign("/bucketlists/");
-                }, 500);
-            }, function(response) {
-                this.$set('status_error', 'Error! Please try again');
-            });
+            if (this.updated) {
+                this.$http.put('/api/v1/bucketlists/' + list_id, { name: this.updated }).then(function(response) {
+                    this.$set('updated', '');
+                    this.$set('status', 'Bucketlist updated');
+                    this.$set('status', '');
+                    this.$set('status_error', '');
+                    this.fetchBucketlists();
+                }, function(response) {
+                    window.location.assign("/404/");
+                });
+            } else {
+                this.$set('status_error', 'Please enter the name you want updated')
+            }
         },
 
         // Deletes a bucketlist
@@ -114,11 +121,10 @@ new Vue({
                 this.$http.delete('/api/v1/bucketlists/' + list_id).then(function(response) {
                     this.bucketlists.$remove(id);
                     this.$set('status', 'Bucketlist deleted');
-                    setTimeout(function() {
-                        window.location.assign("/bucketlists/");
-                    }, 500);
+                    this.$set('status', '');
+                    this.fetchBucketlists();
                 }, function(response) {
-                    this.$set('status_error', 'Error! Please try again');
+                    window.location.assign("/404/");
                 });
             }
         },
@@ -126,11 +132,17 @@ new Vue({
         showSearch: function() {
             this.$set('search', true);
             this.$set('notsearch', true);
+            this.$set('bucketlists', []);
+            this.$set('startSearch', true);
         },
 
         showAdd: function() {
             this.$set('search', false);
             this.$set('notsearch', false);
+            this.$set('status_error', '');
+            this.$set('status', '');
+            this.$set('searchParam', '');
+            this.fetchBucketlists();
         },
 
         goToItem: function(list) {
