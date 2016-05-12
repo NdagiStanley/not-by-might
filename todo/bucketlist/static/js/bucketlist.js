@@ -60,6 +60,8 @@ new Vue({
             this.$http.get('/api/v1/bucketlists/?q=' + this.searchParam).then(function(response) {
                 this.$set('bucketlists', response.data.results);
                 this.$set('startSearch', false);
+                this.$set('startResults', true);
+                this.$set('text', this.searchParam);
                 this.$set('searchParam', '');
                 if (response.data.results.length == 0) {
                     this.$set('status_error', 'Error! No bucketlists match that search');
@@ -144,6 +146,7 @@ new Vue({
             this.$set('status_error', '');
             this.$set('status', '');
             this.$set('searchParam', '');
+            this.$set('startResults', '');
             this.$set('startSearch', false);
             this.fetchBucketlists();
         },

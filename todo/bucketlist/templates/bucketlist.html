@@ -61,6 +61,11 @@
         </div>
         <!-- Display bucketlists -->
         <span v-else>
+        <span v-if="startResults && !status_error">
+            <div class="col-md-12">
+                <h1>Search results for '[[ text ]]'</h1>
+            </div>
+        </span>
         <div class="col-md-6 " v-for="bucketlist in bucketlists">
         <br >
             <div class="list-group ">

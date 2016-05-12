@@ -104,6 +104,7 @@ new Vue({
                         this.items.$remove(id);
                         this.$set('status', 'Item deleted');
                         this.$set('status', '');
+                        this.$set('status_error', '');
                         this.fetchItems();
                 }, function(response) {
                     window.location.assign("/404/");
