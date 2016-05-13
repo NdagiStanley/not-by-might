@@ -8,9 +8,6 @@
             <a class="navbar-brand page-scroll" href="/account/#!/login/" @click="logOut"> Logout [[ username ]] </a>
         </li>
         <br >
-        <!-- <button v-show="!search" class="btn btn-primary" @click="showSearch">
-            <i class="fa fa-search"></i>
-        </button> -->
     </ul>
 </div>
 {% endblock %}
@@ -18,12 +15,6 @@
 <!-- Header -->
 <div align="center" id="bucketlists">
     <section id="all_bucketlists">
-        <!-- Add bucketlist -->
-        <span v-if="list.length==0">
-            <div class="col-md-6 col-md-offset-3">
-            <h1>Create your first bucketlist below :)</h1>
-            </div>
-        </span>
         <div class="col-md-6 col-lg-offset-3">
             <div id="notification">
                 <div id="status" class="alert alert-success" v-show="status"> [[ status ]] </div>
@@ -36,6 +27,9 @@
                 </button>
                 </h3>
             </div>
+            <button v-show="!search" class="btn btn-primary" @click="showSearch">
+                <i class="fa fa-search"></i>
+            </button>
             <div class="panel-body" v-show="!search">
                 <form name="add" id="Account" @submit.prevent="addBucketlist">
                     <div class="input-group col-md-8 col-lg-offset-2">
@@ -61,6 +55,12 @@
             </div>
         </div>
         </section>
+        <!-- Add bucketlist -->
+        <span v-if="list.length==0">
+            <div class="col-md-6 col-md-offset-3">
+            <h1>Create your first bucketlist above :)</h1>
+            </div>
+        </span>
         <!-- Display bucketlists -->
         <span v-else>
         <span v-if="startResults && !status_error">

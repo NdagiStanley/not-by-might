@@ -27,14 +27,6 @@ new Vue({
         logOut: function() {
             localStorage.setItem('id_token', '');
         },
-        showSearch: function() {
-            this.$set('search', true);
-            Vue.set(this.data, 'notsearch', true);
-            this.$set('bucketlists', []);
-            this.$set('status_error', '');
-            this.$set('list', [bucketlists]);
-            this.$set('startSearch', true);
-        },
     }
 });
 
@@ -148,6 +140,15 @@ new Vue({
                     window.location.assign("/404/");
                 });
             }
+        },
+
+        showSearch: function() {
+            this.$set('search', true);
+            this.$set('notsearch', true);
+            this.$set('bucketlists', []);
+            this.$set('status_error', '');
+            this.$set('list', [bucketlists]);
+            this.$set('startSearch', true);
         },
 
         showAdd: function() {
