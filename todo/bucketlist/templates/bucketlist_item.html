@@ -21,11 +21,6 @@
         <div class="col-md-4 col-md-offset-4">
             <h3>/<a href="/bucketlists/">BACK</a>/bucketlist [[ list ]]</h3>
         </div>
-        <span v-if="items.length==0">
-            <div class="col-md-6 col-md-offset-3">
-            <h1>Create your first item below :)</h1>
-            </div>
-        </span>
         <!-- Add item -->
         <div class="col-md-6 col-md-offset-3">
             <div class="panel-body">
@@ -40,6 +35,11 @@
             </div>
         </div>
         </section>
+        <span v-if="items.length==0">
+            <div class="col-md-6 col-md-offset-3">
+            <h1>Create your first item above :)</h1>
+            </div>
+        </span>
         <!-- Display items -->
         <span v-else>
             <br >
