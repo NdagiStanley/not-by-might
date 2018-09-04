@@ -1,0 +1,110 @@
+{% extends 'masterpage.html' %}
+{% load staticfiles %}
+{% block title %}ACCOUNT{% endblock %}
+{% block content %}
+<!-- Header -->
+<section id="app">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12" id="account">
+                <div class="col-lg-4 col-lg-offset-4" class="container">
+                    <router-view>
+                        <!-- Vue routes -->
+                    </router-view>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Register template rendered by Register component -->
+<template id="register_form">
+    <h2 class="section-heading">Register</h2>
+    <div id="register">
+        <div id="status" class="alert alert-success" v-show="status"> [[ status ]] </div>
+        <div id="status" class="alert alert-danger" v-show="status_error"> [[ status_error ]] </div>
+        <form name="signup" id="Account" @submit.prevent="signUp">
+            <div class="row">
+                <div class="form-group input-group">
+                    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                    <input type="text" class="form-control" placeholder="Username *" id="name" required data-validation-required-message="Please enter your name." v-model="user.username" v-validate:username="['required']">
+                    <p class="help-block text-danger"></p>
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i></span>
+                    <input type="email" class="form-control" placeholder="Email *" id="email" required data-validation-required-message="Please enter your email address." v-model="user.email">
+                    <p class="help-block text-danger"></p>
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon"><i class="fa fa-key fa-fw" aria-hidden="true"></i></span>
+                    <input type="password" class="form-control" placeholder="Password *" id="password" required data-validation-required-message="Please enter the password you are to use." v-model="user.password">
+                    <p class="help-block text-danger"></p>
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon"><i class="fa fa-key fa-fw" aria-hidden="true"></i></span>
+                    <input type="password" class="form-control" placeholder="Confirm the password you've just entered *" id="password" required data-validation-required-message="Please confirm the password you entered." v-model="user.confirm_password">
+                    <p class="help-block text-danger"></p>
+                </div>
+                <div>
+                    <span v-show="user.confirm_password">
+                        <div id="success"></div>
+                        <button type="submit" class="btn btn-xl">Sign Up</button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <br>
+    <p><a v-link="{ path: '/login/', replace: true }">Already, having an account? Login</a></p>
+</template>
+<!-- Login template rendered by Login component -->
+<template id="login_form">
+    <h2 class="section-heading">Login</h2>
+    <div id="login">
+        <div id="status" class="alert alert-success" v-show="status"> [[ status ]] </div>
+        <div id="status" class="alert alert-danger" v-show="status_error"> [[ status_error ]] </div>
+        <form name="signup" id="Account" @submit.prevent="signIn" action="http://localhost:8000/bucketlists/">
+            <div class="row">
+                <div class="form-group input-group">
+                    <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                    <input type="text" class="form-control" placeholder="Your username *" id="name" required data-validation-required-message="Please enter your username." v-model="user.username">
+                    <p class="help-block text-danger"></p>
+                </div>
+                <div class="form-group input-group">
+                    <span class="input-group-addon"><i class="fa fa-key fa-fw" aria-hidden="true"></i></span>
+                    <input type="password" class="form-control" placeholder="Password *" id="password" required data-validation-required-message="Please enter your password." v-model="user.password">
+                    <p class="help-block text-danger"></p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-4">
+                </div>
+                <div>
+                    <span v-show="user.password">
+                        <div id="success"></div>
+                        <button type="submit" class="btn btn-xl">Login</button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <br>
+    <p><a v-link="{ path: '/', replace: true }">You don't have an account? Register</a></p>
+</template>
+{% endblock %}
+{% block vuejsfiles %}
+<script src="{% static 'js/account.js' %}"></script>
+{% endblock %}
+{% block footer %}
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <span class="copyright">Copyright &copy; NBM 2016</span>
+                <br>
+                <h2>Tools leveraged</h2>
+                <span>Django, DRF (Django REST Framework), VueJS, Bootstrap</span>
+                <br>
+                <span><a class="fa fa-github" href="https://github.com/NdagiStanley/not-by-might" target="_blank"></a></span>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}

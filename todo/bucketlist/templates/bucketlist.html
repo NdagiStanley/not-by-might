@@ -1,0 +1,111 @@
+{% extends 'masterpage.html' %}
+{% load staticfiles %}
+{% block title %}Bucketlists{% endblock %}
+{% block navbar %}
+<div id="topbar">
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a class="navbar-brand page-scroll" href="/account/#!/login/" @click="logOut"> Logout [[ username ]] </a>
+        </li>
+        <br >
+    </ul>
+</div>
+{% endblock %}
+{% block content %}
+<!-- Header -->
+<div align="center" id="bucketlists">
+    <section id="all_bucketlists">
+        <div class="col-md-6 col-lg-offset-3">
+            <div id="notification">
+                <div id="status" class="alert alert-success" v-show="status"> [[ status ]] </div>
+                <div id="status" class="alert alert-danger" v-show="status_error"> [[ status_error ]] </div>
+            </div>
+            <div class="panel-heading">
+                <h3 class="section-heading">
+                <button v-show="notsearch" class="btn btn-primary" @click="showAdd">
+                    Add a Bucketlist
+                </button>
+                </h3>
+            </div>
+            <button v-show="!search" class="btn btn-primary" @click="showSearch">
+                <i class="fa fa-search"></i>
+            </button>
+            <div class="panel-body" v-show="!search">
+                <form name="add" id="Account" @submit.prevent="addBucketlist">
+                    <div class="input-group col-md-8 col-lg-offset-2">
+                        <input class="form-control" placeholder="Bucketlist Name" v-model="bucketlist.name">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary">Create</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <!-- Search through the Bucketlists -->
+            <div v-show="search">
+                <form name="search" id="search" @submit.prevent="searchBucketlists">
+                    <div class="input-group col-md-6 col-lg-offset-3">
+                        <input class="form-control" v-model="searchParam" placeholder="Search">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </section>
+        <!-- Add bucketlist -->
+        <span v-if="list.length==0">
+            <div class="col-md-6 col-md-offset-3">
+            <h1>Create your first bucketlist above :)</h1>
+            </div>
+        </span>
+        <!-- Display bucketlists -->
+        <span v-else>
+        <span v-if="searchResults && !status_error">
+            <div class="col-md-12">
+                <h1>Search results for '[[ text ]]'</h1>
+            </div>
+        </span>
+        <div class="col-md-4" v-for="bucketlist in bucketlists">
+        <br >
+            <div class="list-group ">
+                <div class="list-group-item ">
+                    <a href="/bucketlist_items/" @click="goToItem(bucketlist)">
+                        <h4 >
+                            [[ bucketlist.name ]]
+                        </h4>
+                        <span class="badge">[[ bucketlist.items.length ]] items</span>
+                        <br>
+                    </a>
+                    <br>
+                    <!-- synced after "change" instead of "input" -->
+                    <form class="col-md-11"  @submit.prevent="updateBucketlist($index, bucketlist.id)">
+                    <input type="text " v-model="updated " placeholder="edit me" lazy>
+                    <button class="btn btn-xs btn-warning " @click="updateBucketlist($index, bucketlist.id) ">
+                    <i class="fa fa-pencil-square-o"></i>
+                    </button>
+                    </form>
+                    <button class="btn btn-xs btn-danger col-md-1" @click="deleteBucketlist($index, bucketlist.id) ">
+                        <i class="fa fa-trash-o fa-2x"></i>
+                    </button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+        </span>
+        <span v-show="startSearch">
+            <div class="col-md-12">
+                <h1>Enter a search term and browse</h1>
+                <i class="fa fa-search fa-5x"></i>
+            </div>
+        </span>
+</div>
+<br>
+<br>
+<br>
+{% endblock %} {% block vuejsfiles %}
+<script src="{% static 'js/bucketlist.js' %} "></script>
+{% endblock %}

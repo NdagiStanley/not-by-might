@@ -1,0 +1,73 @@
+[{
+    "fields": {
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": true,
+        "is_staff": true,
+        "last_login": "2016-03-27 09:19:15.653102+03",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$5eNDE5VPC9hf$bs3YFBmsOOj9yt398YHDJKoqf6ezckr6y8X1jFYK+tM=",
+        "email": "me@adm.in",
+        "date_joined": "2016-03-27 09:19:15.653102+03"
+    },
+    "model": "auth.user",
+    "pk": 1
+}, {
+    "fields": {
+        "username": "md",
+        "first_name": "Stan",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2016-03-27 09:19:15.653102+03",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$5eNDE5VPC9hf$bs3YFBmsOOj9yt398YHDJKoqf6ezckr6y8X1jFYK+tM=",
+        "email": "ndagis@gmail.com",
+        "date_joined": "2016-04-07 09:51:15.653102+03"
+    },
+    "model": "auth.user",
+    "pk": 2
+}, {
+    "fields": {
+        "name": "Bucketlist1",
+        "date_created": "2016-03-27 09:19:15.653102+03",
+        "date_modified": "2016-03-27 09:52:15.653102+03",
+        "created_by": 1
+    },
+    "model": "bucketlist.bucketlist",
+    "pk": 1
+}, {
+    "fields": {
+        "name": "Bucketlist2",
+        "date_created": "2016-03-27 09:20:15.653102+03",
+        "date_modified": "2016-03-27 09:53:15.653102+03",
+        "created_by": 2
+    },
+    "model": "bucketlist.bucketlist",
+    "pk": 2
+}, {
+    "fields": {
+        "title": "Let's do this",
+        "done": false,
+        "date_created": "2016-03-27 09:19:15.653102+03",
+        "date_modified": "2016-03-27 09:52:15.653102+03",
+        "bucketlist": 1
+    },
+    "model": "bucketlist.bucketlistitem",
+    "pk": 1
+}, {
+    "fields": {
+        "title": "Let's do this too",
+        "done": true,
+        "date_created": "2016-03-27 09:19:15.653102+03",
+        "date_modified": "2016-03-27 09:52:15.653102+03",
+        "bucketlist": 2
+    },
+    "model": "bucketlist.bucketlistitem",
+    "pk": 2
+}]
