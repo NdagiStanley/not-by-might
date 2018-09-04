@@ -3,8 +3,8 @@ from rest_framework.response import Response
 
 from django.contrib.auth.models import User
 
-from serializers import BucketlistSerializer, BucketlistItemSerializer, UserRegisterSerializer
-from models import Bucketlist, BucketlistItem
+from bucketlist.serializers import BucketlistSerializer, BucketlistItemSerializer, UserRegisterSerializer
+from bucketlist.models import Bucketlist, BucketlistItem
 
 
 class UserRegisterAPIView(generics.CreateAPIView):

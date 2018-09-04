@@ -3,7 +3,6 @@
 [![Build Status](https://semaphoreci.com/api/v1/stanmd/not-by-might/branches/feature-review/badge.svg)](https://semaphoreci.com/stanmd/not-by-might)
 [![Coverage Status](https://coveralls.io/repos/github/NdagiStanley/not-by-might/badge.svg?branch=feature-review)](https://coveralls.io/github/NdagiStanley/not-by-might?branch=feature-review)
 [![Code Health](https://landscape.io/github/NdagiStanley/not-by-might/feature-review/landscape.svg?style=flat)](https://landscape.io/github/NdagiStanley/not-by-might/feature-review)
-[![Code Issues](https://www.quantifiedcode.com/api/v1/project/b4fcf46ab7d1438b86f77d14ae709f3c/badge.svg)](https://www.quantifiedcode.com/app/project/b4fcf46ab7d1438b86f77d14ae709f3c)
 ![MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 A bucketlist basically means that the things you would like to do or achieve before you **EXPIRE**
@@ -123,7 +122,7 @@ This has been implemented using vuejs (frontend framework)
 
 and Bootstrap (frontend framework)
 
-<div align="center"><img width="150"src="http://cwfan.cc/wp-content/uploads/2015/11/bootstrap-logo.png">
+<div align="center"><img width="150"src="https://i.imgur.com/RCyaJpq.png">
 </div>
 
 
