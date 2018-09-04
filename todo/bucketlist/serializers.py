@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 from django.contrib.auth.models import User
 
-from models import Bucketlist, BucketlistItem
+from bucketlist.models import Bucketlist, BucketlistItem
 
 
 class UserRegisterSerializer(serializers.ModelSerializer):
