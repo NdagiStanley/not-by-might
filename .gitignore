@@ -60,13 +60,3 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
-
-# Static files
-staticfiles/
-
-# temporary files
-*.tmp
-*~
-
-# OSX folder attributes
-.DS_Store
