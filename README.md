@@ -147,11 +147,8 @@ RUN ```heroku git push [branch_name]``` without the [ ]. The branch_name should 
 ----
 
 Copyright AD-2016
-###### [Stanley Ndagi](http://techkenyans.org/jamii/stanmd) c/o [Andela](http://andela.com)
+###### [Stanley Ndagi](https://stanmd.tk) c/o [Andela](http://andela.com)
 
 Inspiration:
 
 It's not by might that you achieve the things you do in life!
-<div align="center">
-<img src="https://scontent.xx.fbcdn.net/t31.0-8/13055734_10201410751228121_1746141436641529211_o.jpg">
-</div>
