@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 
 class Bucketlist(models.Model):
     name = models.CharField(max_length=20)
-    created_by = models.ForeignKey(User, related_name="bucketlists")
+    created_by = models.ForeignKey(
+        User, related_name="bucketlists", on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True, editable=False)
     date_modified = models.DateTimeField(auto_now=True, editable=False)
 
@@ -27,7 +28,8 @@ class Bucketlist(models.Model):
 
 class BucketlistItem(models.Model):
     title = models.CharField(max_length=30)
-    bucketlist = models.ForeignKey(Bucketlist, related_name="bl_items")
+    bucketlist = models.ForeignKey(
+        Bucketlist, related_name="bl_items", on_delete=models.CASCADE)
     done = models.BooleanField(default=False)
     date_created = models.DateTimeField(auto_now_add=True, editable=False)
     date_modified = models.DateTimeField(auto_now=True, editable=False)
