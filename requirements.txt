@@ -2,12 +2,12 @@ coverage==4.0.3
 coveralls==1.1
 dj-database-url==0.4.1
 dj-static==0.0.6
-Django==1.8.3
+django>=1.11.18
 django-nose==1.4.3
 djangorestframework==3.3.2
 djangorestframework-jwt==1.7.2
 django-toolbelt==0.0.1
 django-webpack-loader==0.3.0
 drfdocs==0.0.9
-gunicorn==19.4.5
+gunicorn>=19.5.0
 psycopg2-binary==2.7.5
